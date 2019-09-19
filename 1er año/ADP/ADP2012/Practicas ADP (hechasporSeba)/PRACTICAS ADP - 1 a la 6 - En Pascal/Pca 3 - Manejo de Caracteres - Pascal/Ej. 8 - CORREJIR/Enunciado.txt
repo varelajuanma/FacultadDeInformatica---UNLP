@@ -1,0 +1,7 @@
+8.- Se lee una secuencia de caracteres terminadas en 'b.' (blanco punto). La secuencia representa a un 
+párrafo. El párrafo es un conjunto de oraciones, donde cada oración está delimitada por un '*'. 
+Sólo la oración final tiene 'b.' (blanco punto). 
+Determinar: 
+a) cantidad total de oraciones leídas. 
+b) la oración con menor cantidad de palabras. 
+c) la cantidad de veces que aparece la palabra ‘la’.

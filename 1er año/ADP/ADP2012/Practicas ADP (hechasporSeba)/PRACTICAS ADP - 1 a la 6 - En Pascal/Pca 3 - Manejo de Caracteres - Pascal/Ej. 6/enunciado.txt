@@ -1,0 +1,6 @@
+6.- Escriba una programa que lea una secuencia de caracteres terminada en ‘#’. 
+a) Contar la cantidad de palabras de longitud 6 que componen esa secuencia. 
+b) Idem a) pero además contando la cantidad de palabras que comienzan con ‘PA’. 
+c) Idem a) pero además contando la cantidad de palabras que finalizan con ‘SA’. 
+d) Idem a) pero además contando la cantidad de palabras que comienzan con ‘MI’ y terminan con 
+‘CA’.
