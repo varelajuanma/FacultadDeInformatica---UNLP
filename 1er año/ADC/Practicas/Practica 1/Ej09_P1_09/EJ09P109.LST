@@ -1,0 +1,50 @@
+
+								p gina: 1 
+
+ Listado Fuente: Ej09P109.lst
+ Programa Fuente en: Ej09P109.asm
+ Fecha: Tue Jan 20 10:52:47 2009
+
+ ÚDir.ÚCodigo maquina	 Linea¿	ÚCodigo en lenguaje ensamble
+
+			      1	                  ORG 1000H
+ 1000 04		      2	         NUM      DB   4
+ 1001 03		      3	        VECES     DB   3
+			      4	
+			      5	                  ORG 3000H
+ 3000 80 FC 00		      6	       ROTADER:   CMP AH, 0
+ 3003 74 1A		      7	                  JZ FINAL1
+ 3005 B2 00		      8	       ROTAD:     MOV DL, 0
+ 3007 80 EC 02		      9	       SIGO :     SUB  AH, 2
+ 300A 72 0A		     10	                  JC FIN
+ 300C FE C2		     11	                  INC DL
+ 300E 80 FC 00		     12	                  CMP AH, 0
+ 3011 74 06		     13	                  JZ  FINAL
+ 3013 E9 07 30		     14	                  JMP SIGO
+ 3016 80 C2 80		     15	           FIN:   ADD DL, 80H
+ 3019 8A E2		     16	        FINAL:    MOV AH, DL
+ 301B FE C9		     17	                  DEC CL
+ 301D 75 E6		     18	                  JNZ ROTAD
+ 301F C3		     19	         FINAL1:  RET
+			     20	;
+			     21	;                 
+			     22	                  ORG 2000H
+ 2000 8A 26 00 10	     23	                  MOV AH, NUM
+ 2004 8A 0E 01 10	     24	                  MOV CL, VECES
+ 2008 E8 00 30		     25	                  CALL ROTADER
+ 200B F4		     26	                  HLT
+			     27	                  END
+
+
+ S I M B O L O S:
+
+ Nombre:	Tipo:		Valor:
+
+ NUM     	Byte		1000h
+ VECES   	Byte		1001h
+ ROTADER 	Label		3000h
+ ROTAD   	Label		3005h
+ SIGO    	Label		3007h
+ FIN     	Label		3016h
+ FINAL   	Label		3019h
+ FINAL1  	Label		301Fh

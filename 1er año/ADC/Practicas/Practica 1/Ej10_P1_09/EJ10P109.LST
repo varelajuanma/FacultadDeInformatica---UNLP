@@ -1,0 +1,34 @@
+
+								p gina: 1 
+
+ Listado Fuente: Ej10P109.lst
+ Programa Fuente en: Ej10P109.asm
+ Fecha: Tue Jan 20 11:11:39 2009
+
+ ÚDir.ÚCodigo maquina	 Linea¿	ÚCodigo en lenguaje ensamble
+
+			      1	                     ORG  1000H
+ 1000 7F		      2	        DIVIDENDO    DB      127
+ 1001 0A		      3	         DIVISOR     DB       10
+			      4	;
+			      5	                     ORG  3000H
+ 3000 2A E1		      6	           RESTO:    SUB  AH, CL
+ 3002 3A E1		      7	                     CMP  AH, CL
+ 3004 73 FA		      8	                     JNC  RESTO
+ 3006 C3		      9	                     RET
+			     10	;
+			     11	                     ORG  2000H
+ 2000 8A 26 00 10	     12	                     MOV  AH, DIVIDEND
+ 2004 8A 0E 01 10	     13	                     MOV  CL, DIVISOR
+ 2008 E8 00 30		     14	                     CALL  RESTO
+ 200B F4		     15	                     HLT
+			     16	                     END
+
+
+ S I M B O L O S:
+
+ Nombre:	Tipo:		Valor:
+
+ DIVIDEND	Byte		1000h
+ DIVISOR 	Byte		1001h
+ RESTO   	Label		3000h

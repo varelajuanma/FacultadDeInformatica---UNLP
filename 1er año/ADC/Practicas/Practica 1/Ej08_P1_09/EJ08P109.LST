@@ -1,0 +1,45 @@
+
+								p gina: 1 
+
+ Listado Fuente: Ej08P109.lst
+ Programa Fuente en: Ej08P109.asm
+ Fecha: Sat Jan 10 17:03:07 2009
+
+ ÚDir.ÚCodigo maquina	 Linea¿	ÚCodigo en lenguaje ensamble
+
+			      1	                             ORG  1000H
+ 1000 C1		      2	                   DATO      DB     193
+ 1001 03		      3	                 ROTADE      DB      3
+			      4	;
+			      5	                             ORG  3000H
+ 3000 02 C0		      6	                  ROTARIZ:  ADD AL,AL
+ 3002 73 03		      7	                            JNC SIGO
+ 3004 80 D0 00		      8	                            ADC AL,0 
+ 3007 FE C9		      9	                   SIGO:    DEC CL   
+ 3009 75 F5		     10	                            JNZ ROTARIZ  
+ 300B C3		     11	                            RET                 
+			     12	;
+			     13	                            ORG  4000H
+ 4000 B4 08		     14	                 ROTADER:   MOV  AH, 8
+ 4002 2A E1		     15	                            SUB  AH, CL
+ 4004 8A CC		     16	                            MOV  CL, AH
+ 4006 E8 00 30		     17	                            CALL  ROTARIZ
+ 4009 C3		     18	                            RET
+			     19	;
+			     20	                            ORG  2000H
+ 2000 8A 06 00 10	     21	                            MOV  AL, DATO
+ 2004 8A 0E 01 10	     22	                            MOV  CL,  ROTADE
+ 2008 E8 00 40		     23	                            CALL  ROTADER
+ 200B F4		     24	                            HLT
+			     25	                            END
+
+
+ S I M B O L O S:
+
+ Nombre:	Tipo:		Valor:
+
+ DATO    	Byte		1000h
+ ROTADE  	Byte		1001h
+ ROTARIZ 	Label		3000h
+ SIGO    	Label		3007h
+ ROTADER 	Label		4000h

@@ -1,0 +1,76 @@
+
+								p gina: 1 
+
+ Listado Fuente: Ej12P109.lst
+ Programa Fuente en: Ej12P109.asm
+ Fecha: Sat Jan 10 15:42:54 2009
+
+ ÚDir.ÚCodigo maquina	 Linea¿	ÚCodigo en lenguaje ensamble
+
+			      1	                                ORG  1000H
+ 1000 41 42 42 45 75 4D	      2	               FRASE     DB   "ABBEuMMno",0
+ 1006 4D 6E 6F 00
+			      3	;
+			      4	                                ORG  3000H
+ 3000 80 F8 41		      5	          ES_VOCAL:  CMP  AL, 41H
+ 3003 74 32		      6	                                JZ  FIN
+ 3005 80 F8 45		      7	                                CMP  AL, 45H
+ 3008 74 2D		      8	                                JZ  FIN
+ 300A 80 F8 49		      9	                                CMP  AL, 49H
+ 300D 74 28		     10	                                JZ  FIN
+ 300F 80 F8 4F		     11	                                CMP  AL, 4FH
+ 3012 74 23		     12	                                JZ  FIN
+ 3014 80 F8 55		     13	                                CMP  AL, 55H
+ 3017 74 1E		     14	                                JZ  FIN
+ 3019 80 F8 61		     15	                                CMP  AL, 61H
+ 301C 74 19		     16	                                JZ  FIN
+ 301E 80 F8 65		     17	                                CMP  AL, 65H
+ 3021 74 14		     18	                                JZ  FIN
+ 3023 80 F8 69		     19	                                CMP  AL, 69H
+ 3026 74 0F		     20	                                JZ  FIN
+ 3028 80 F8 6F		     21	                                CMP  AL, 6FH
+ 302B 74 0A		     22	                                JZ  FIN
+ 302D 80 F8 75		     23	                                CMP  AL, 75H
+ 3030 74 05		     24	                                JZ  FIN
+ 3032 B0 00		     25	                                MOV  AL, 00H
+ 3034 E9 39 30		     26	                                JMP  FINAL
+ 3037 B0 FF		     27	                      FIN:  MOV  AL, 0FFH
+ 3039 C3		     28	                 FINAL:  RET
+			     29	;
+			     30	                                ORG 4000H
+ 4000 80 3F 00		     31	          VOCALES:   CMP  BYTE PTR [BX], 0
+ 4003 74 11		     32	                                JZ  FIN1
+ 4005 8A 07		     33	                                MOV  AL, [BX]
+ 4007 E8 00 30		     34	                                CALL ES_VOCAL
+ 400A 80 F8 00		     35	                                CMP  AL, 0
+ 400D 74 02		     36	                                JZ  NO_ES_VO
+ 400F FF C1		     37	                                INC  CX
+ 4011 FF C3		     38	      NO_ES_VOC:   INC  BX
+ 4013 E9 00 40		     39	                                JMP  VOCALES
+ 4016 C3		     40	                                FIN1:  RET
+			     41	;
+			     42	                                ORG  2000H
+ 2000 BB 00 10		     43	                                MOV  BX, OFFSET 
+				 FRASE
+ 2003 B9 00 00		     44	                                MOV  CX, 0
+ 2006 E8 00 40		     45	                                CALL  VOCALES
+ 2009 F4		     46	                                HLT
+			     47	                                END
+
+
+ S I M B O L O S:
+
+ Nombre:	Tipo:		Valor:
+
+
+
+
+								p gina: 2 
+
+ FRASE   	Byte		1000h
+ ES_VOCAL	Label		3000h
+ FIN     	Label		3037h
+ FINAL   	Label		3039h
+ VOCALES 	Label		4000h
+ NO_ES_VO	Label		4011h
+ FIN1    	Label		4016h
