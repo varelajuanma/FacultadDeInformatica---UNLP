@@ -1,0 +1,56 @@
+
+								p gina: 1 
+
+ Listado Fuente: Ej07P109.lst
+ Programa Fuente en: Ej07P109.asm
+ Fecha: Mon Jan 19 15:17:08 2009
+
+ ÚDir.ÚCodigo maquina	 Linea¿	ÚCodigo en lenguaje ensamble
+
+			      1	                ORG 1000H
+ 1000 41 7A 41 79 74 41	      2	       FRASE    DB      'AzAytA',0
+ 1006 00
+ 1007 41		      3	       CARAC    DB       'A'
+			      4	
+			      5	                ORG  3000H
+ 3000 53		      6	      NCHAR:    PUSH  BX
+ 3001 8B DC		      7	                MOV  BX,SP
+ 3003 81 C3 04 00	      8	                ADD  BX,4
+ 3007 8B 07		      9	                MOV  AX,[BX]
+ 3009 81 C3 02 00	     10	                ADD  BX,2
+ 300D 8B 17		     11	                MOV  DX,[BX]
+ 300F 8B DA		     12	                MOV  BX,DX
+ 3011 80 3F 00		     13	      SIGO:     CMP BYTE PTR [BX],0
+ 3014 74 0E		     14	                JZ  FIN
+ 3016 3A 07		     15	                CMP  AL,[BX]
+ 3018 75 05		     16	                JNZ  NO_SUMO
+ 301A FF C1		     17	                INC  CX
+ 301C C6 07 58		     18	                MOV  byte ptr[BX],58H
+ 301F FF C3		     19	      NO_SUMO:  INC  BX
+ 3021 E9 11 30		     20	                JMP  SIGO
+ 3024 5B		     21	           FIN: POP BX
+ 3025 C3		     22	                RET
+			     23	;
+			     24	;
+			     25	                         ORG  2000H
+ 2000 B9 00 00		     26	                         MOV CX,0000H
+ 2003 BB 00 10		     27	                         MOV  BX,OFFSET FRASE
+ 2006 53		     28	                         PUSH  BX
+ 2007 B4 00		     29	                         MOV  AH,0
+ 2009 8A 06 07 10	     30	                         MOV  AL,CARAC
+ 200D 50		     31	                         PUSH  AX
+ 200E E8 00 30		     32	                         CALL  NCHAR
+ 2011 F4		     33	                         HLT
+			     34	                         END
+
+
+ S I M B O L O S:
+
+ Nombre:	Tipo:		Valor:
+
+ FRASE   	Byte		1000h
+ CARAC   	Byte		1007h
+ NCHAR   	Label		3000h
+ SIGO    	Label		3011h
+ NO_SUMO 	Label		301Fh
+ FIN     	Label		3024h

@@ -1,0 +1,51 @@
+
+								p gina: 1 
+
+ Listado Fuente: Ej35P109.lst
+ Programa Fuente en: Ej35P109.asm
+ Fecha: Sun Jan 18 22:26:57 2009
+
+ ÚDir.ÚCodigo maquina	 Linea¿	ÚCodigo en lenguaje ensamble
+
+			      1	        ORG  1000H
+ 1000 34 92		      2	NUM1  DW  9234H
+ 1002 11 11		      3	      DW  1111H
+ 1004 34 92		      4	NUM2  DW  9234H
+ 1006 22 22		      5	      DW  2222H
+			      6	
+			      7	        ORG  3000H
+ 3000 53		      8	SUM32:  PUSH BX
+ 3001 8B DC		      9	        MOV BX,SP
+ 3003 81 C3 06 00	     10	        ADD BX,6
+ 3007 8B 07		     11	        MOV AX,[BX]
+ 3009 81 EB 02 00	     12	        SUB BX,2
+ 300D 8B 0F		     13	        MOV CX,[BX]
+ 300F 8B D8		     14	        MOV BX,AX
+ 3011 8B 07		     15	        MOV AX,[BX]
+ 3013 81 C3 02 00	     16	        ADD BX,2
+ 3017 8B 17		     17	        MOV DX,[BX]
+ 3019 8B D9		     18	        MOV BX,CX
+ 301B 8B 0F		     19	        MOV CX,[BX]
+ 301D 81 C3 02 00	     20	        ADD BX,2
+ 3021 03 C1		     21	        ADD AX,CX
+ 3023 13 17		     22	        ADC DX,[BX]
+ 3025 5B		     23	        POP BX
+ 3026 C3		     24	        RET
+			     25	
+			     26	        ORG  2000H
+ 2000 B8 00 10		     27	        MOV AX,OFFSET NUM1
+ 2003 50		     28	        PUSH AX
+ 2004 B8 04 10		     29	        MOV AX,OFFSET NUM2
+ 2007 50		     30	        PUSH AX
+ 2008 E8 00 30		     31	        CALL SUM32
+ 200B F4		     32	        HLT
+			     33	        END
+
+
+ S I M B O L O S:
+
+ Nombre:	Tipo:		Valor:
+
+ NUM1    	Word		1000h
+ NUM2    	Word		1004h
+ SUM32   	Label		3000h

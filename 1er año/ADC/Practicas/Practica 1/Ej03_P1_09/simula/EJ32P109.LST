@@ -1,0 +1,37 @@
+
+								p gina: 1 
+
+ Listado Fuente: EJ32P109.LST
+ Programa Fuente en: EJ32P109.ASM
+ Fecha: Mon Sep 07 10:57:51 2009
+
+ ÚDir.ÚCodigo maquina	 Linea¿	ÚCodigo en lenguaje ensamble
+
+			      1	        ORG  1000H
+ 1000 34 92		      2	NUM1  DW  9234H
+ 1002 11 11		      3	      DW  1111H
+ 1004 34 92		      4	NUM2  DW  9234H
+ 1006 22 22		      5	      DW  2222H
+			      6	
+			      7	        ORG  3000H
+ 3000 03 C1		      8	SUM32:  ADD AX,CX
+ 3002 13 D3		      9	        ADC DX,BX
+ 3004 C3		     10	        RET
+			     11	
+			     12	        ORG  2000H
+ 2000 8B 06 00 10	     13	        MOV AX,NUM1
+ 2004 8B 16 02 10	     14	        MOV DX,NUM1+2
+ 2008 8B 0E 04 10	     15	        MOV CX,NUM2
+ 200C 8B 1E 06 10	     16	        MOV BX,NUM2+2
+ 2010 E8 00 30		     17	        CALL SUM32
+ 2013 F4		     18	        HLT
+			     19	        END
+
+
+ S I M B O L O S:
+
+ Nombre:	Tipo:		Valor:
+
+ NUM1    	Word		1000h
+ NUM2    	Word		1004h
+ SUM32   	Label		3000h

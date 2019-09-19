@@ -1,0 +1,37 @@
+
+								p gina: 1 
+
+ Listado Fuente: Ej05P109.lst
+ Programa Fuente en: Ej05P109.asm
+ Fecha: Mon Jan 19 12:03:29 2009
+
+ ÚDir.ÚCodigo maquina	 Linea¿	ÚCodigo en lenguaje ensamble
+
+			      1	                       ORG 1000H
+ 1000 41 7A 41 79 74 41	      2	        FRASE          DB      "AzAytA",0
+ 1006 00
+			      3	
+			      4	                       ORG  3000H
+ 3000 80 3F 00		      5	            CONCAR:    CMP  byte ptr[BX],0
+ 3003 74 07		      6	                       JZ  FIN
+ 3005 FF C1		      7	                       INC  CX
+ 3007 FF C3		      8	                       INC  BX
+ 3009 E9 00 30		      9	                       JMP  CONCAR
+ 300C C3		     10	             FIN:      RET
+			     11	
+			     12	
+			     13	                         ORG  2000H
+ 2000 BB 00 10		     14	                         MOV  BX,OFFSET FRASE
+ 2003 B9 00 00		     15	                         MOV  CX,0
+ 2006 E8 00 30		     16	                         CALL CONCAR
+ 2009 F4		     17	                         HLT
+			     18	                         END
+
+
+ S I M B O L O S:
+
+ Nombre:	Tipo:		Valor:
+
+ FRASE   	Byte		1000h
+ CONCAR  	Label		3000h
+ FIN     	Label		300Ch
