@@ -1,0 +1,32 @@
+
+								p gina: 1 
+
+ Listado Fuente: Ej31P109.lst
+ Programa Fuente en: Ej31P109.ASM
+ Fecha: Sun Jan 18 21:25:28 2009
+
+ ÚDir.ÚCodigo maquina	 Linea¿	ÚCodigo en lenguaje ensamble
+
+			      1	      ORG 1000H
+ 1000 34 92		      2	NUM1  DW  9234H
+ 1002 11 11		      3	      DW  1111H
+ 1004 34 92		      4	NUM2  DW  9234H
+ 1006 22 22		      5	      DW  2222H
+			      6	
+			      7	      ORG 2000H
+ 2000 8B 06 00 10	      8	      MOV  AX, NUM1
+ 2004 8B 0E 04 10	      9	      MOV  CX, NUM2
+ 2008 8B 16 02 10	     10	      MOV  DX, NUM1+2
+ 200C 8B 1E 06 10	     11	      MOV  BX, NUM2+2
+ 2010 03 C1		     12	      ADD  AX, CX
+ 2012 13 D3		     13	      ADC  DX, BX
+ 2014 F4		     14	      HLT
+			     15	      END
+
+
+ S I M B O L O S:
+
+ Nombre:	Tipo:		Valor:
+
+ NUM1    	Word		1000h
+ NUM2    	Word		1004h

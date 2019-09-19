@@ -1,0 +1,27 @@
+Escribir un programa en Winmips64 que sume los elementos consecutivos de unatabla, comenzando
+desde la direccion de memoria etiquetada INICIO, hasta qe el resultado supere el valor establecido
+en MINIMO. Al detectarse que la suma de un elemento dara como resultado un valor mayor, debe finalizarse
+la operacion y elmacenar el resultado final con el valor que supera a MINIMO en la direccion de memoria
+denominada FINAL.
+
+	.data
+INICIO: .word 14, 8, 21, 11, 5, 19, 2, o, 4, 10, 32, 1, 0, 16, 3, 9, 12, 22
+MINIMO: .word 100
+FINAL:  .word 0
+
+	.code
+	daddi r1, r0, 18
+	dadd r2, r0, r0
+	ld r3, MINIMO (r0)
+	dadd r4, r0, r0
+	dadd r6, r0, r0
+	dadd r5, r0, r0
+loop:   sd r2, TABLA (r2)
+	daddi r1, r1, -1
+	daddi r2, r2, 8
+	dadd r4, r4, r2
+	slt r6, r4, r3
+	bnez r6, loop
+	nop
+	sd r4, FINAL
+	halt
