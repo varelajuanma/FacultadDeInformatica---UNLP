@@ -1,0 +1,12 @@
+SEARCH_DIR(c:\users\juanma~1\desktop\practi~1\practi~1\pca3-m~1\eja69d~1.1\a)\)
+SEARCH_DIR(c:\dev-pas\units\)
+SEARCH_DIR(c:\dev-pas\units\rtl\)
+SEARCH_DIR(c:\dev-pas\bin\)
+INPUT(
+c:\dev-pas\units\rtl\wprt0.ow
+c:\users\juanma~1\desktop\practi~1\practi~1\pca3-m~1\eja69d~1.1\a)\ej1ap3.ow
+)
+GROUP(
+c:\dev-pas\units\rtl\LIBPOB~2.AW
+c:\dev-pas\units\rtl\LIBPSY~2.AW
+)
