@@ -1,0 +1,21 @@
+/* hecho por Andrew 
+ * https://www.facebook.com/eltranquilo.andrew
+ * */
+package ejercicio1;
+
+public abstract class ListaDeEnteros
+{
+	protected int tamanio;
+	abstract public void comenzar();
+	abstract public void proximo();
+	abstract public boolean fin();
+	abstract public int elemento();
+	abstract public int elemento(int pos);
+	abstract public boolean agregar(int elem);
+	abstract public boolean agregar(int elem,int pos);
+	abstract public boolean eliminar();
+	abstract public boolean eliminar(int pos);
+	abstract public boolean esVacia();
+	abstract public boolean incluye(int elem);
+	abstract public int tamanio();
+}
