@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2014/03/19 15:26:07.218.pas,C:\Users\alumnos\Documents\RAD Studio\Projects\Unit15.pas=C:\Users\alumnos\Documents\DelphiJMV\EjercicioEjemploDobleVentana.pas</Transaction>
+    <Transaction>2014/03/19 15:26:07.218.dfm,C:\Users\alumnos\Documents\RAD Studio\Projects\Unit15.dfm=C:\Users\alumnos\Documents\DelphiJMV\EjercicioEjemploDobleVentana.dfm</Transaction>
+    <Transaction>2014/03/19 15:26:28.209.pas,C:\Users\alumnos\Documents\RAD Studio\Projects\Unit16.pas=C:\Users\alumnos\Documents\DelphiJMV\Uejercicioejemplo.pas</Transaction>
+    <Transaction>2014/03/19 15:26:28.209.dfm,C:\Users\alumnos\Documents\RAD Studio\Projects\Unit16.dfm=C:\Users\alumnos\Documents\DelphiJMV\Uejercicioejemplo.dfm</Transaction>
+    <Transaction>2014/03/19 15:26:32.788.dproj,C:\Users\alumnos\Documents\RAD Studio\Projects\Project13.dproj=C:\Users\alumnos\Documents\DelphiJMV\Project13.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

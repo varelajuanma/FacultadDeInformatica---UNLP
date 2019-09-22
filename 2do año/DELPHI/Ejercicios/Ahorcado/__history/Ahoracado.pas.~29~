@@ -1,0 +1,228 @@
+unit Ahoracado;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ExtCtrls, Menus, ImgList, jpeg, unit2;
+
+type
+  TForm1 = class(TForm)
+    MainMenu1: TMainMenu;
+    Juego1: TMenuItem;
+    Salir1: TMenuItem;
+    Otrapalabra1: TMenuItem;
+    Panel1: TPanel;
+    Button1: TButton;
+    Button2: TButton;
+    Button3: TButton;
+    Button4: TButton;
+    Button5: TButton;
+    Button6: TButton;
+    Button7: TButton;
+    Button8: TButton;
+    Button9: TButton;
+    Button10: TButton;
+    Button11: TButton;
+    Button12: TButton;
+    Button13: TButton;
+    Button14: TButton;
+    Button15: TButton;
+    Button16: TButton;
+    Button17: TButton;
+    Button18: TButton;
+    Button19: TButton;
+    Button20: TButton;
+    Button21: TButton;
+    Button22: TButton;
+    Button23: TButton;
+    Button24: TButton;
+    Button25: TButton;
+    Button26: TButton;
+    Button27: TButton;
+    Panel2: TPanel;
+    Label1: TLabel;
+    Edit1: TEdit;
+    Label2: TLabel;
+    Panel3: TPanel;
+    Image1: TImage;
+    Image2: TImage;
+    Image3: TImage;
+    Image4: TImage;
+    Image5: TImage;
+    Image6: TImage;
+    Image7: TImage;
+    Image8: TImage;
+    procedure Otrapalabra1Click(Sender: TObject);
+    procedure Salir1Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+
+{$R *.dfm}
+
+procedure TForm1.Button1Click(Sender: TObject);
+var
+  EsteBoton: Tbutton;
+  p,sec,c: string;
+  i,error,aciertos,tam,aux: integer;
+  ok: boolean;
+begin
+  error:= StrToInt(label2.Caption);
+  sec := Edit1.text;                          //palabra con guiones
+  p := Form2.Edit1.Text;                     // palabra secreta
+  EsteBoton := TButton (sender);
+  c := EsteBoton.Caption[1];
+  tam:= length(p);
+  for i := 2 to length(p) do               // recorre la palabra
+    If (p[i] = c[1]) then begin          // busca la letra clickeada en la palabra
+      aciertos:=aciertos + 1;
+      sec[i+i-1] := c[1];               // reemplaza el guion por la letra en la posicion i + i -1 **********
+      ok := true;
+    end;
+  if (ok = false) then begin
+    error:= error + 1;
+    Label2.Caption := IntToStr(error);
+    case error of
+      1:image2.visible:=true;
+      2:image3.visible:=true;
+      3:image4.visible:=true;
+      4:image5.visible:=true;
+      5:image6.visible:=true;
+      6:image7.visible:=true;
+      7:image8.visible:=true;
+    end;
+  end;
+  Edit1.text:=sec;
+  Esteboton.Enabled := False;
+  aux:=aux + aciertos;
+  if (aux = length(p)) then begin
+    Messagedlg('¡GANASTE!. Encontraste la palabra.',mtinformation,[mbok],0);
+  end;
+  if (error = 7) then begin
+   Messagedlg('¡PERDISTE!. La palabra era "'+p+'".',mtinformation,[mbok],0);
+   for I := 0 to panel1.ControlCount - 1 do
+     panel1.Controls[i].Enabled:=false;
+  end;
+end;
+{var
+  fallos,aciertos,i:integer;
+  eleccion,letra,cad1:String;
+  fin,acierta:boolean;
+begin
+  fallos:=0;
+  aciertos:=0;
+  eleccion:=Form2.Edit1.Text;
+  letra:=TButton(sender).Caption;
+  cad1:=Edit1.Text;
+  for i := 1 to length(eleccion) do
+    if eleccion[i] = letra then begin
+      inc(aciertos);
+      acierta:= true;
+      cad1[i]:=letra[1];
+    end;
+  edit1.Text:=cad1;
+  if not(acierta) then begin
+    inc(fallos);
+    Image1.Picture.Bitmap.LoadFromResourceName(hInstance,'AHORCADO'+intTOstr(fallos));
+  end;
+  fin:=(aciertos=length(eleccion)) or (fallos = 7);
+  if fin then begin
+    if (aciertos=length(eleccion)) then
+      Image1.Picture.Bitmap.LoadFromResourceName(hInstance,'AHORCADO8');
+    Messagedlg('¡PERDISTE!. La palabra era "'+eleccion+'".',mtinformation,[mbok],0);
+  end;}
+
+{var
+  eleccion,letra,pal: string;
+  i,fallos,aciertos,error: integer;
+  acierta,fin:boolean;
+
+begin
+ fallos:=0;
+ aciertos:=0;
+ eleccion:= Form2.Edit1.Text;
+ letra := TButton(sender).Caption;
+ pal := Edit1.Text;
+ error:= StrToInt(label2.Caption);
+ for i := 1 to length(eleccion) do begin
+   acierta:=false;
+   if (eleccion[i] = letra) then begin
+     inc(aciertos);
+     acierta:=true;
+     pal[i]:=letra[1];
+     Tbutton(sender).Enabled:=false;
+   end;
+ edit1.Text:=pal;
+ if acierta=false then begin
+   Label2.Caption := IntToStr(error + 1);
+   inc(fallos);
+ if error = 1 then
+   image2.Visible:= true;
+ if error = 2 then
+   image3.Visible:= true;
+ if error = 3 then
+   image4.visible:= true;
+ if error = 4 then
+   image5.Visible:= true;
+ if error = 5 then
+   image6.Visible:= true;
+ if error = 6 then
+   image7.Visible:= true;
+ if error = 7 then
+   image8.Visible:= true;
+ end;
+ if (error = 7) or (aciertos = length(eleccion)) then begin
+   Messagedlg('¡PERDISTE!. La palabra era "'+eleccion+'".',mtinformation,[mbok],0);
+ end;
+end;
+end; }
+
+
+
+procedure TForm1.Otrapalabra1Click(Sender: TObject);
+var
+  I: Integer;
+  s,p,aux:string;
+  MiButton: Tbutton;
+  J: Integer;
+begin
+  if (Form2.ShowModal=mrOk) then begin
+    s:='';
+    p:= Form2.Edit1.Text;
+    end;
+
+  for I := 1 to length(p) do
+    if (p[I] = p[1]) then begin
+      s := s + p[1];
+      end
+    else
+      s := s + ' ' + '_';
+  edit1.Text := s;
+
+  for J := 0 to Panel1.ControlCount - 1 do begin
+    MiButton := Panel1.Controls[J] as TButton;
+    MiButton.Enabled := true;
+    aux:=MiButton.Caption;
+    If (aux[1] = p[1]) then begin
+      Mibutton.Enabled := false;
+    end;
+  end;
+
+end;
+
+procedure TForm1.Salir1Click(Sender: TObject);
+begin
+  Form1.Close;
+end;
+
+end.

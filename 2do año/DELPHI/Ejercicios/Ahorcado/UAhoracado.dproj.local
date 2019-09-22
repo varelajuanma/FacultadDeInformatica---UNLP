@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2014/03/28 19:17:03.454.pas,C:\Users\Juan Manuel\Documents\RAD Studio\Projects\Unit1.pas=C:\Users\Juan Manuel\Desktop\Informatica\2do año\DELPHI\Ejercicios\Ahoracado.pas</Transaction>
+    <Transaction>2014/03/28 19:17:03.455.dfm,C:\Users\Juan Manuel\Documents\RAD Studio\Projects\Unit1.dfm=C:\Users\Juan Manuel\Desktop\Informatica\2do año\DELPHI\Ejercicios\Ahoracado.dfm</Transaction>
+    <Transaction>2014/03/28 19:17:10.154.dproj,C:\Users\Juan Manuel\Documents\RAD Studio\Projects\Project1.dproj=C:\Users\Juan Manuel\Desktop\Informatica\2do año\DELPHI\Ejercicios\UAhoracado.dproj</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="Ahoracado.pas"/>
+    <File Path="Ahoracado.dfm"/>
+    <File Path="Unit2.pas"/>
+    <File Path="Unit2.dfm"/>
+  </ProjectSortOrder>
+</BorlandProject>

@@ -1,0 +1,183 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  AutoSize = True
+  Caption = 'Verificador de palabras'
+  ClientHeight = 409
+  ClientWidth = 577
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  Menu = MainMenu1
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 577
+    Height = 409
+    TabOrder = 0
+    object VerificarTexto: TBitBtn
+      Left = 36
+      Top = 352
+      Width = 153
+      Height = 41
+      Caption = 'Verificar Texto'
+      DoubleBuffered = True
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentDoubleBuffered = False
+      ParentFont = False
+      TabOrder = 0
+      OnClick = VerificarTextoClick
+    end
+    object EliminarPalabras: TBitBtn
+      Left = 216
+      Top = 352
+      Width = 153
+      Height = 41
+      Caption = 'Eliminar Palabras'
+      DoubleBuffered = True
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentDoubleBuffered = False
+      ParentFont = False
+      TabOrder = 1
+      OnClick = EliminarPalabrasClick
+    end
+    object EliminarNumeros: TBitBtn
+      Left = 402
+      Top = 352
+      Width = 153
+      Height = 41
+      Caption = 'Eliminar N'#250'meros'
+      DoubleBuffered = True
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentDoubleBuffered = False
+      ParentFont = False
+      TabOrder = 2
+      OnClick = EliminarNumerosClick
+    end
+    object GroupBox1: TGroupBox
+      Left = 24
+      Top = 16
+      Width = 175
+      Height = 321
+      Caption = 'Texto a Verificar ( 0 )'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 3
+      object MemoPalabras: TMemo
+        Left = 12
+        Top = 24
+        Width = 153
+        Height = 286
+        TabOrder = 0
+      end
+    end
+    object GroupBox2: TGroupBox
+      Left = 205
+      Top = 16
+      Width = 175
+      Height = 321
+      Caption = 'Palabras Verificadas ( 0 )'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 4
+      object ListBoxPalabras: TListBox
+        Left = 11
+        Top = 24
+        Width = 153
+        Height = 286
+        ItemHeight = 13
+        PopupMenu = PopupMenu1
+        TabOrder = 0
+      end
+    end
+    object GroupBox3: TGroupBox
+      Left = 392
+      Top = 16
+      Width = 175
+      Height = 321
+      Caption = 'N'#250'meros Verificados ( 0 )'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 5
+      object ListBoxNumeros: TListBox
+        Left = 10
+        Top = 24
+        Width = 153
+        Height = 286
+        ItemHeight = 13
+        PopupMenu = PopupMenu2
+        TabOrder = 0
+      end
+    end
+  end
+  object MainMenu1: TMainMenu
+    Left = 48
+    Top = 280
+    object Archivo1: TMenuItem
+      Caption = 'Archivo'
+      object Abrirarchivo1: TMenuItem
+        Caption = 'Abrir archivo'
+      end
+    end
+    object Salir1: TMenuItem
+      Caption = 'Salir'
+      OnClick = Salir1Click
+    end
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 232
+    Top = 280
+    object EliminarPalabras1: TMenuItem
+      Caption = 'Eliminar palabra'
+    end
+    object Eliminartodaslaspalabras1: TMenuItem
+      Caption = 'Eliminar todas las palabras'
+    end
+    object Guardarenunarchivo1: TMenuItem
+      Caption = 'Guardar en un archivo'
+    end
+  end
+  object PopupMenu2: TPopupMenu
+    Left = 416
+    Top = 272
+    object Eliminarnumero1: TMenuItem
+      Caption = 'Eliminar n'#250'mero'
+    end
+    object Eliminartodoslosnumeros1: TMenuItem
+      Caption = 'Eliminar todos los n'#250'meros'
+    end
+    object Guardarenunarchivo2: TMenuItem
+      Caption = 'Guardar en un archivo'
+    end
+  end
+end

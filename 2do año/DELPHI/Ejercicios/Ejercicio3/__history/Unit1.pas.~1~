@@ -1,0 +1,42 @@
+unit Unit1;
+
+interface
+  Function FormatoCuitValido(numero: String): Boolean;
+  Function EntidadCuitValido(numero: String): Boolean;
+  Function CuitValido(numero: String): Boolean;
+
+implementation
+  Function FormatoCuitValido(numero: String): Boolean;
+    var
+      i:integer;
+      cantnum:integer;
+      ok:boolean;
+    begin
+      cantnum:= 0;
+      i:= 0;
+      if (Length(numero) = 13) then begin
+        if (numero[3] and numero[12] = '-') then begin
+          ok := true;
+          Delete(numero,3,1);
+          Delete(numero,12,1);
+          end
+        else
+          ok := false;
+        if (ok = true) then begin
+          while (numero[i] is ['0','1','2','3','4','5''6','7','8','9']) and (i<11) do begin
+            cantnum:= cantnum + 1;
+            i:= i + 1;
+          end;
+          if (cantnum = 11) then begin
+            ok := true;
+            end
+          else
+            ok := false;
+        end;
+        FormatoCuitValido:= ok;
+      end;
+    end;
+  Function EntidadCuitValido(numero: String): Boolean;
+
+
+end.

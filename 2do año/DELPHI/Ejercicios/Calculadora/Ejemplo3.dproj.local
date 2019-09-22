@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2014/03/12 16:27:12.519.pas,C:\Users\alumnos\Documents\RAD Studio\Projects\Unit7.pas=C:\Delphi2014JMV\UCalculadora\UCalculator.pas</Transaction>
+    <Transaction>2014/03/12 16:27:12.519.dfm,C:\Users\alumnos\Documents\RAD Studio\Projects\Unit7.dfm=C:\Delphi2014JMV\UCalculadora\UCalculator.dfm</Transaction>
+    <Transaction>2014/03/12 16:27:15.614.dproj,C:\Users\alumnos\Documents\RAD Studio\Projects\Project7.dproj=C:\Delphi2014JMV\UCalculadora\Ejemplo3.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

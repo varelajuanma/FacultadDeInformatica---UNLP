@@ -1,0 +1,95 @@
+unit Ubotondificildealcanzar;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Buttons, ExtCtrls;
+
+type
+  TEjercicio2 = class(TForm)
+    Panel1: TPanel;
+    Edit1: TEdit;
+    Label1: TLabel;
+    BitBtn1: TBitBtn;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    BitBtn2: TBitBtn;
+    BitBtn3: TBitBtn;
+    BitBtn4: TBitBtn;
+    BitBtn5: TBitBtn;
+    procedure BitBtn2Click(Sender: TObject);
+    procedure BitBtn5Click(Sender: TObject);
+    procedure BitBtn3Click(Sender: TObject);
+    procedure BitBtn4Click(Sender: TObject);
+    procedure BitBtn1MouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Ejercicio2: TEjercicio2;
+
+implementation
+
+{$R *.dfm}
+
+
+
+procedure TEjercicio2.BitBtn1MouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+  begin
+  BitBtn1.Left := random(273);
+  BitBtn1.Top := random(216);
+  end;
+
+procedure TEjercicio2.BitBtn2Click(Sender: TObject);
+begin
+  if (bitbtn1.Left <> 0) then begin
+    bitbtn1.Left:= bitbtn1.Left - 1;
+    bitbtn5.Enabled:= true;
+  end;
+  if (bitbtn1.Left = 0) then begin
+    bitbtn2.Enabled := false;
+  end;
+
+end;
+
+procedure TEjercicio2.BitBtn3Click(Sender: TObject);
+begin
+  if (bitbtn1.top <> 0) then begin
+    bitbtn1.top:= bitbtn1.top - 1;
+    bitbtn4.Enabled:= true;
+  end;
+  if (bitbtn1.top = 0) then begin
+    bitbtn3.Enabled := false;
+  end;
+end;
+
+procedure TEjercicio2.BitBtn4Click(Sender: TObject);
+begin
+  if (bitbtn1.top <> 216) then begin
+    bitbtn1.top:= bitbtn1.top + 1;
+    bitbtn3.Enabled:= true;
+  end;
+  if (bitbtn1.top = 216) then begin
+    bitbtn4.Enabled := false;
+  end;
+end;
+
+procedure TEjercicio2.BitBtn5Click(Sender: TObject);
+begin
+  if (bitbtn1.Left <> 273) then begin
+    bitbtn1.Left:= bitbtn1.Left + 1;
+    bitbtn2.Enabled:= true;
+  end;
+  if (bitbtn1.Left = 273) then begin
+    bitbtn5.Enabled := false;
+  end;
+
+end;
+
+end.
