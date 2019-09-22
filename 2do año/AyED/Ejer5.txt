@@ -1,0 +1,3 @@
+punto c: utilizando una variable "global"
+punta a: utilizando un arreglo o una lista.
+punto b:

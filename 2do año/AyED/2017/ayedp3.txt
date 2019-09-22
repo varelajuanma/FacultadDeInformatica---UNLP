@@ -1,0 +1,146 @@
+
+-------------------------------CONTAR HOJAS ::
+
+public int contarHojas(){
+	 int aux =0;
+	 
+	 if(!this.esHoja()&& !this.getHijoIzquierdo().esVacio()){
+		 aux= aux + this.getHijoIzquierdo().contarHojas();
+	 }
+	 if(!this.esHoja()&& !this.getHijoDerecho().esVacio()){
+		 aux= aux +  this.getHijoDerecho().contarHojas();
+	 }
+		 
+	 else if(this.esHoja()){
+		 return ++aux;
+	 }
+	 
+	 return aux;
+
+	}
+	
+ESPEJO -------------------------------------	
+	
+	public ArbolBinario<T> espejo(){
+		ArbolBinario<T> aux ;
+		if(!this.esHoja()){
+		   if(!this.getHijoIzquierdo().esVacio() && !this.getHijoDerecho().esVacio());
+	      	{
+	      	 System.out.println("entre1");
+		       aux= this.getHijoIzquierdo();
+		       this.agregarHijoIzquierdo(this.getHijoDerecho());
+		       this.agregarHijoDerecho(aux);
+		    	}  
+	        this.getHijoIzquierdo().espejo();
+	  	    this.getHijoDerecho().espejo();
+		     if(this.getHijoIzquierdo().esVacio() && !this.getHijoDerecho().esVacio())
+		    		 {
+		    	 System.out.println("entre2");
+					  this.agregarHijoIzquierdo(this.getHijoDerecho());
+		              this.eliminarHijoDerecho();
+		              this.getHijoDerecho().espejo();
+		    		 }
+	        else {
+	        	if(!this.getHijoIzquierdo().esVacio()&& this.getHijoDerecho().esVacio()){
+	                 System.out.println("entre3");
+	                 this.getHijoIzquierdo().espejo();
+                     this.agregarHijoDerecho(this.getHijoIzquierdo());
+		             this.eliminarHijoIzquierdo();
+	        	}	
+	        }  	
+		}	 
+		return this;
+		}	
+IMPRIMIR  in order ( no se pedia ) solo lo hice para probar los metodos )......................................	
+	
+	public void inOrder(){
+		if(!this.esVacio()){
+			this.getHijoIzquierdo().inOrder();
+			System.out.println(this.getDatoRaiz());
+			this.getHijoDerecho().inOrder();
+		}
+	}
+
+
+ENTRE NIVELES ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+ public void entreNiveles(int n, int m){
+	int nivel,na; nivel=n;
+    ArbolBinario<T> a;
+    ColaGenerica<ArbolBinario<T>> p ;
+    p = new ColaGenerica<ArbolBinario<T>>();
+    p.encolar(this);
+    p.encolar(null);
+	na=0;
+	if(na<n){
+		while(na<n){
+			while(p.tope()!= null){
+				a=p.desencolar();
+				if(!a.esHoja()){
+					if(!a.getHijoDerecho().esVacio()){
+						p.encolar(a.getHijoDerecho());
+					}
+					if(!a.getHijoIzquierdo().esVacio()){
+						p.encolar(a.getHijoIzquierdo());
+					}
+				}
+			}
+			p.desencolar();
+			p.encolar(null);
+			na ++;
+		}}
+		while(na<=m){
+			System.out.println("llegue1");
+			while(p.tope()!= null){
+				a=p.desencolar();
+				System.out.println(a.getDatoRaiz().toString());
+				if(!a.esHoja()){
+					if(!a.getHijoDerecho().esVacio()){
+						p.encolar(a.getHijoDerecho());
+					}
+					if(!a.getHijoIzquierdo().esVacio()){
+						p.encolar(a.getHijoIzquierdo());
+					}
+				}
+			}
+			p.desencolar();
+			p.encolar(null);
+			na ++;
+			
+		}
+		
+	}
+
+
+CONTADOR ARBOL :::::::::::::::::::::::::::::::::::::::::::..
+
+//PREORDEN
+public static ColaGenerica<Integer> numerosPares(ArbolBinario<Integer> a){
+ColaGenerica<Integer> cola = new ColaGenerica<Integer>();
+	if(!a.esVacio()){
+		if(a.getDatoRaiz() % 2 == 0){
+			System.out.println("entr2");
+			cola.encolar(a.getDatoRaiz());
+		   c.encolar(a.getDatoRaiz());
+		}
+		numerosPares(a.getHijoIzquierdo());
+		numerosPares(a.getHijoDerecho());
+		
+	   }
+	return cola;
+}
+//INORDEN
+public static ColaGenerica<Integer> numerosPares2(ArbolBinario<Integer> a){
+ColaGenerica<Integer> cola = new ColaGenerica<Integer>();
+	if(!a.esVacio()){
+		numerosPares(a.getHijoIzquierdo());
+		if(a.getDatoRaiz() % 2 == 0){
+			System.out.println("entr2");
+			cola.encolar(a.getDatoRaiz());
+		   c.encolar(a.getDatoRaiz());
+		}
+	
+		numerosPares(a.getHijoDerecho());
+		
+	   }
+	return cola;
+}
