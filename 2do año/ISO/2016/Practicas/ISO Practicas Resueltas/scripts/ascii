@@ -1,0 +1,8 @@
+#!/bin/bash
+
+cd /home
+for user in `ls` 
+do
+	cd $user
+	
+done

@@ -1,0 +1,11 @@
+#!/bin/bash
+#dar dos opciones, ingrese el patron a buscar y el nombre del archivo destino
+#busca en todo /etc los archivos que concuerden con $1 y los empaquete y comprime en un unico archivo
+#con nombre de $2
+
+echo -n "Ingrese patron a buscar: "
+read patron
+echo -n "Ingrese el nombre del archivo destino: "
+read archivoDestino
+cd /etc
+tar -cvzf $archivoDestino `ls | grep $patron`

@@ -1,0 +1,64 @@
+1) Cuando un proceso ejecuta una operacio de E/S pasa a estado:
+	BLOQUEADO.
+
+2) Decimos q el tiempo de espera de un proceso es:
+	TIEMPO EN EL Q EL PROCESO SE ENCUENTRA EN EL SISTEMA SIN CONTAR EL TIEMPO DE UTILIZACION DE LA CPU.
+
+3) Dos procesos A y B llegaron al sistema en el instante 0 (PID 1 y 2 respectivamente) suponiendo una planificacion RR,q el proceso A vuelve de una E/S y el proceso B esta primera en la cola de listos,q proceso es el prox en ejecutarse:
+	EL PROCESO B YA QUE ESTA PRIMERO EN LA COLA DE LISTOS.
+
+4) En el algoritmo VRR al alegir el prox proceso a tomar la CPU tendra mas prioridad:
+	EN EL PROCESO Q TERMINO UNA E/S.
+
+5) Cuales de los siguientes elementos se almacenan en la PCB:
+	PPID Y PID.
+
+6) La PCB es una estructura q contien datos asociada a:
+	UN PROCESO.
+
+7) La tecnica de aging o envejecimiento es un mecanismo para:
+	EVITAR STARVATION.
+
+8) Las cuestiones mas importantes al diseñar un algoritmo de planificaicon son:
+	MAXIMIZAR EL USO DEL CPU.
+
+9) Para procesos de E/S lo ideal es:
+	ALTA PRIORIDAD, QUANTUM CHICO.
+
+10) Quien pasa a un proceso de nuevo a listo es:
+	LONG TERM SCHEDULER.
+
+11) Quien puede cambiar la afinidad de un proceso con un procesador:
+	EL KERNEL(MOFICANDO LA PBC) Y EL USUARIO.
+
+12) Quien saca a un proceso del estado suspendido es:
+	MEDIUM TERM SCHEDULER.
+
+13) Acerca de las transciones entre estados de un proceso:
+	UN PROCESO PUEDE PASAR DE ESTADO NUEVO A LISTO.
+	UN PROCESO PUEDE PASAR DE ESTADO ESPERANDO A UN ESTADO LISTO.
+
+14) Procesos CPU - BOUND:
+	SON PROCESOS Q HACEN MUCHO USO DE LA CPU.
+
+15) Suponga q existen dos procesos A y B. El proceso A necesita 4 unidades de CPU y el proceso B necesita 3 unidades de CPU. Ademas se esta utilizando un algoritmo de planificacion RR con quantum 3 y timer fijo. Si el primero en ejecutarse es el proceso A, lo correcto es:
+	EJECUTA EL PROCESO A POR 3 UNIDADES, LUEGO EL B POR 3 UNIDADES, LUEGO EL A POR 1 UNIDAD.
+
+16) Suponga q tiene muchos procesos E/S bound. Que algoritmo de planificacion de procesos considera mas adecuado:
+	VRR
+
+17) A que se refiere el termino starvation:
+	A LA IMPOSIBILIDAD DE EJECUCION DE UN PROCESO.
+
+18) Acerca del timer fijo en planificaicon por round robin:
+	SU IMPLEMENTACION DEPENDE DEL TIMER.
+	EL QUANTUM ES LA MEDIDA DE TIEMPO PASADA LA CUAL EL SCHEDULER DEBERA ELEGIR EL PROX PROCESO A TOMAR LA CPU
+
+19) Cual de las sig algoritmos de planificaicon puede provocar inanicion:
+	SJF 
+20) ¿Cuales de los siguientes afirmaciones son correctas acerca de un Proceso?
+	TIENEN UN PROGRAM COUNTER PROPIO
+21)¿Qué ocurre cuando un proceso que se está ejecutando termina su quantum?
+	VUELVE A LA COLA DE LISTOS
+22)¿Que tarea realiza el Short Term Scheduler?
+	ELIGE ENTRE LOS PROCESOS QUE ESTAN LISTOS EN MEMORIA PARA DARLES CPU.

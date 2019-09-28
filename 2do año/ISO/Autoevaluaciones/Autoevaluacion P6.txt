@@ -1,0 +1,95 @@
+1) Considere el concepto de inanición y la planificación de discos y responda cual/es de las siguientes afirmaciones son correctas:
+Seleccione una:
+a. No son conceptos que esten directamente relacionados.
+b. Todos los algoritmos de planificación de discos pueden causar inanición. 
+c. El algoritmo SSTF puede causar inanición. CORRECTA
+
+2) Considere el sentido de giro de los algoritmos de planificacion de disco circulares y responda cual/es afirmaciones son verdaderas:
+Seleccione una:
+a. Ningún algoritmo puede romper con su sentido de giro.
+b. Depende de la tecnología del hardware subyacente.
+c. Rompe el sentido de giro siempre que atiene un PF.
+d. A veces rompen el sentido de giro cuando atiene un PF. CORRECTA
+
+3) Considere los conceptos de fallo de página y planificación de disco en indique cual/es afirmaciones son correctas:
+Seleccione una:
+a. Los planificadores de discos priorizan la atención de los PF. CORRECTA
+b. Algunos planificadores de disco tratan a los PF como requerimientos ordinarios.
+c. Son dos conceptos que no tienen relacion directa. Incorrecta
+
+Parcialmente correcta
+4) El objetivo principal de la planificación de discos es:
+Seleccione una o más de una:
+a. Minimizar el tiempo de seek. Correcta
+b. Atender el orden en que los procesos requieren de E/S a disco. INCORRECTA
+c. Minimizar el tiempo de acceso al disco.
+
+5) Indique cual cree que es el orden evolutivo de las tecnicas de E/S.
+Seleccione una:
+a. 1) E/S programada 2) E/S por interrupciones 3) DMA. CORRECTA
+b. 1) E/S por interrupciones 2) DMA 3) E/S programada
+c. 1) E/S por interrupciones 2) E/S programada 3) DMA
+
+Incorrecta
+6) Suponga que cada I-NODO contiene 3 direcciones a bloques de datos organizados con 2 direccionamientos directos y 1 direccionamiento indirecto simple, donde cada bloque de datos es de 1 Kib (Kibibit) y cada dirección para referenciar un bloque es de 32 bits. Indique cuantas referencias (direcciones) a bloque puede contener esta estructura de I-NODO.
+Seleccione una:
+a. 258
+b. 256 INCORRECTA
+c. No tengo los datos suficientes.INCORRECTA
+d. 34 INCORRECTA
+
+Correcta
+7) Suponga que cada I-NODO contiene 3 direcciones a bloques de datos organizados con 2 direccionamientos directos y 1 indirecto simple, donde cada bloque de datos es de 1 Kib (Kibibit) y cada dirección para referenciar un bloque es de 32 bits. Indique cual seria el tamaño máximo de un archivo.
+Seleccione una:
+a. 258KiB Correcta
+b. 256KiB
+c. 32KiB
+d. 4GiB
+
+Incorrecta
+8) Supongamos que un disco gira a 5400 RPM, cual seria el valor de latencia medio:
+Seleccione una:
+a. 5,5 ms
+b. 11 ms INCORRECTA
+c. 9,2 ms INCORRECTA
+d. 5,68 ms Incorrecta
+
+9) Supongamos un disco con 4 platos, con 2 caras útiles, 2000 pistas por cara y 600 sectores por pista de 512 bytes cada uno. ¿Cual(es) de las siguientes opciones refleja(n) el tamano total del disco?
+Seleccione una o más de una:
+a. 4687.5 MiB
+b. 4915200 MiB
+c. 4800000 KiB Correcta
+d. 4800 KiB 
+
+10) ¿Cual de los siguientes algoritmos puede causar inanición?
+Seleccione una:
+a. FCFS 
+b. SCAN
+c. SSTF CORRECTA
+
+Incorrecta
+11) ¿Qué valores son necesarios para calcular el tiempo de acceso a disco?
+Seleccione una:
+a. El valor de seek, el de latencia, la cantidad de bloques del archivo y la velocidad de transferencia de un bloque.
+b. El valor de latencia, la cantidad de bloques del archivo y la velocidad de transferencia de un bloque. El seek se deduce en función de la latencia. Incorrecta
+c. Solamente es necesario la cantidad de bloques y la velocidad de transferencia del bloque. INCORRECTA
+
+Incorrecta
+12) Si tengo que obtener un byte que se encuentra el nivel de indireccionamiento simple, ¿cuantos accesos a disco tengo se realizan?
+Respuesta:
+4
+
+13) Cuando se atienden requerimiento de un disco, los que corresponden a un PF son prioritarios
+Seleccione una:
+Verdadero Correcta
+Falso
+
+14)La mayor degradación en el tiempo de acceso al disco corresponde al tiempo de latencia.
+Seleccione una:
+Verdadero
+Falso CORRECTA
+
+15)Para obtener el INodo de un archivo el SO debe acceder al disco
+Seleccione una:
+Verdadero
+Falso Correcta

@@ -1,0 +1,395 @@
+10:58 JUAN PABLO: Buenas, en 2' arrancamos
+	10:59 JUAN PABLO: si se me corta banquen, que mi conexión 3g es muy pobre
+
+	11:01 JUAN PABLO: Arrancamos, copio pregunta y respuesta, si hay dudas, las dicen.
+	11:01 PABLO: ok
+	11:02 GERMAN: ok
+
+	11:02 JUAN PABLO: 1.	Un thread no tiene program counter (PC) propio . FALSO
+	11:02 JUAN PABLO: 2.	Un thread tiene un stack en modo usuario y uno en modo supervisor, propios . VERD
+
+	11:03 JUAN PABLO: 3.	Un context switch entre threads, no requiere un context switch de registros FALSO
+
+	11:03 MARIELA FERNANDA: ahi a qué registros nos referimos?
+
+	11:04 GERMAN: en la 2 el stack en modo supervisor se refiere al que usa el SO para la administracion ?
+	11:04 JUAN PABLO: NINGUNO EN PARTICULAR
+	11:04 JUAN PABLO: HAY REGISTROS QUE CAMBIAN
+	11:05 MARIELA FERNANDA: OK
+	11:05 JUAN PABLO: Y OTROS QUE NO, PORQUE SON PARA EL PROCESO
+	11:05 JUAN PABLO: EL STACK EN MODO KERNEL, ES PARA LA EJECUCION DEL PROCESO EN MODO KERNEL
+	11:05 GERMAN: okok
+	11:06 JUAN PABLO: 4.	Un hilo creado por un proceso tendrá su propio contexto . VERDADERO, TENES EN CUENTA QUE CADA HILO TIENE UN CONTEXTO Y COMPARTEN INFO DE CONTEXTO DEL MISMO PROCESO
+	11:06 JUAN PABLO: 5.	Un hilo creado por un proceso se ejecutará en el espacio de direcciones de este último. VERDADERO
+
+	11:07 JUAN PABLO: 6.	Un hilo es la unidad básica de uso de la CPU. VERDADERO. ACA PUEDEN DISCUTIR RESPECTO A SI EL SO SOPORTA HILOS, PORQUE SINO SE PODRIA DECIR QUE LA UNIDAD ES EL PROCESO EN ESOS SO
+	11:07 JUAN PABLO: 7.	Un hilo es la unidad de propiedad de recursos. FALSO, ES E L PROCESO
+	11:07 JUAN PABLO: 8.	Dentro de un proceso, un hilo cuenta con un estado de ejecución. VERDADERO
+	11:07 JUAN PABLO: 9.	Hay un PCB por procesos y los hilos que el cree. .FALSO, UN PCB Y VARIOS TCB SE PODRIA DECIR
+
+	11:08 JUAN PABLO: 10.	Cuando un proceso se swapea, los hilos quedan en memoria en estado de espera. ACA TENGAN EN CUENTA SI HABLAMOS DE ULT O KLT
+	11:08 GERMAN: claro pero PCB propiamente diche seria una sola ?
+	11:08 JUAN PABLO: SI, UNA SOLA
+
+	11:09 GIULIANO: pero cuando un proceso se suspende no es que todos sus hilos pasan al mismo estado?
+	11:09 JUAN PABLO: EN LA 10, SI SOLO HAY ULT, PUEDE QUE ALGUNO QUEDE EN ESTADO DE RUNNING, NO NECESARIO EN ESPERA. ANALICENLA CON LA PPT QUE TIENE LA RELACION DE ESTRADOS ENTRE ULT Y EL PROCESO
+	11:09 JUAN PABLO: SI EL SO NO SOPORTA HILOS, NO VA A SUSPENDERLOS...
+	11:09 GUIDO JOSé: pero dice que quedan en memoria
+	11:09 GIULIANO: ah, ok
+	11:10 JUAN PABLO: SUSPENDERA , SWAP OUT , AL PROCESO, PERO NO "VE" A ULT
+	11:10 JUAN PABLO: IGUAL ES FALSO, COMO DICE GUIDO
+	11:10 JUAN PABLO: PORQUE NO QUEDAN EN MEMORIA. ACLARA PARA QUE TENGAN EN CUENTA LA RELACION D EESTADOS ENTRE ULTs
+	11:10 JUAN PABLO: 11.	En la administración de los hilos a nivel de usuario, interviene el kernel. FALSO
+	11:11 JUAN PABLO: 12.	En los ULT, cada proceso se encarga de administrar sus hilos. VERD
+
+	11:11 JUAN PABLO: 13.	LA suspensión de un ULT, provoca la suspensión del proceso. ACA IGUAL QUE LA 10, SI LA SUSPENCION LA CAUSO ALGO RESPECTO AL PROCESO, SERIA VERDADERA, PERO UN ULT PUEDE ESTAR EN ESTADLO SUSPENDIDO, EN MODO USUARIO
+	11:11 JUAN PABLO: DEPENDE LA LIBRERIA Y LO QUE BRINDE
+	11:12 JUAN PABLO: 14.	Los KLT, en un ambiente multiprocesador, pueden ejecutarse en distintos procesadores. VERDADERO,
+	11:12 JUAN PABLO: 15.	En los KLT, el context switch entre hilos, no provoca un cambio de modo. FALSO
+	11:12 JUAN PABLO: 16.	El kernel de Linux 2.4 no consideraba el concepto de thread. VERD
+	11:12 PABLO: la 13 seria verdadera?
+	11:12 JUAN PABLO: 17.	La System Call clone() permitía compartir la tabla de archivos entre el proceso padre e hijo pero no el espacio de memoria. FALSO
+	11:13 JUAN PABLO: SERIA "ABIERTA" LA 13
+	11:13 JUAN PABLO: 18.	El kernel de Linux 2.6 adopto el modelo POSIX, donde se utilizaba el modelo N:M. FALSO, ES 1:!
+	11:13 JUAN PABLO: 1:1
+	11:13 JUAN PABLO: 19.	Solaris implementa el modelo: N:m
+	11:13 JUAN PABLO: NO NECESARIAMENTE N:N COMO DICE AHI, ESTARIA MAL LA OPCION
+	11:14 JUAN PABLO: 20.	En Solaris, cada ULT siempre tiene relacionado un LWP. FALSO
+	11:14 ALEX PABLO: como sería solaris entons? n:m?
+	11:14 GIULIANO: Solaris usaba un esquema de dos niveles, puede ser? Y luego pasó a 1:1
+	11:14 JUAN PABLO: N:M
+	11:15 ALEX PABLO: ahh puede ser 3 ULT y 2KLT
+	11:15: FEDERICO EMMANUEL OTARAN entró a la sala
+	11:15 MARIELA FERNANDA: perdón en la 20 yo había contestado V porque pensé que se refería al momento de ejecutarse un ULT digamos
+	11:15 JUAN PABLO: 21.	Supongamos que en Solaris existe un proceso con varios ULT y que tiene asociado un único LWP. Si uno de sus ULT realiza una operación de E/S:
+	11:15 JUAN PABLO: Otro ULT del mismo proceso pasa a ejecutarse
+	11:15 JUAN PABLO: ESTA MAL IDENTADA LA 21
+
+	11:16 JUAN PABLO: AL 20 DICE "SIEMPRE", NO DICE "AL MOMENTO DE..."
+
+	11:16 MARIELA FERNANDA: Ok
+	11:16 JUAN PABLO: 22.	En Solaris, un proceso que tiene relacionado un único LWP, podrá aprovechar el uso de múltiples procesadores. FALSO
+	11:17 GIULIANO: pueden ser no ligados
+	11:17 GUIDO JOSé: y la 21 ?
+	11:17 JUAN PABLO: 23.	En Solaris, existen tantos KLTs como procesadores tenga la computadora. VERDADERO
+	11:17 JUAN PABLO: SI, SI ESTAN LIGADOS SI, PERO NO HABLA AHI DE LIGADOS
+	11:17 GIULIANO: claro
+	11:17 JUAN PABLO: LA 21: •	Otro ULT del mismo proceso pasa a ejecutarse
+	11:18 ALEX PABLO: ¿en solaris se puede dar que haya mas KLT que procesadores?
+	11:18 GERMAN: para ... la 23 tuya es la 26 nuestra
+	11:18 JUAN PABLO: SI, PERDON, ACOMODE EL DOCUMENTO Y ME CAMBIO LOS NUMEROS
+	11:18 JUAN PABLO: PORQUE ESTABA MAL IDENTADA LA PREGUNTA 21
+	11:19 PABLO: pregunta con la 23
+	11:19: GABRIEL ALEJANDRO GIUSSI entró a la sala
+	11:19 PABLO: 26 nuestra
+	11:19: AGUSTíN VáZQUEZ CéNDRóN entró a la sala
+	11:19 JUAN PABLO: AHI ACOMODO
+	11:19 PABLO: no tiene un KTS x procesador?
+	11:19 JUAN PABLO: 27.	En Solaris, existen tantos LWPs como ULTs haya entre todos los procesos del sistema. FALSO
+	11:20 JUAN PABLO: SI PABLO, LA 26 DE UDS ES VERDADERA
+	11:20 JUAN PABLO: 28.	En Solaris, la biblioteca de threads en modo usuario planifica la ejecución de los KLT sobre los procesadores. FALSO
+	11:20 JUAN PABLO: 29.	En Solaris, un UTL ligado a un LWP podrá ejecutar aplicaciones con requerimientos de Tiempo Real. VERD
+	11:21: AGUSTíN VáZQUEZ CéNDRóN salió de la sala
+	11:21 JUAN PABLO: 30.	En Solaris, un ULT puede estar en estado “Sleeping” y el LWP asociado en estado “Blocked” FALSO
+	11:21: AGUSTíN VáZQUEZ CéNDRóN entró a la sala
+	11:21 JUAN PABLO: 31.	En Solaris, todo LWP con estado “Running” tiene asociado un ULT en estado “Active”. V ERD
+	11:21 JUAN PABLO: 32.	En Solaris, la información de los registros del procesador es almacenada en los ULT. FALSO
+	11:22 JUAN PABLO: 33.	Supongamos que en Solaris tenemos un programa que almacena cada dato que ingresa un usuario en 7 archivos diferentes. Para garantizar el mayor paralelismo en la aplicación, deberíamos contar con: •	Un proceso con 7 ULTs y 7 LWPs
+	11:22 JUAN PABLO: 34.	Windows implementa el modelo 1:1 para sus threads. VERD
+	11:23 JUAN PABLO: 35.	La utilización de Fibers en Windows permite implementar un modelo N:M. V ERD
+	11:23 JUAN PABLO: 36.	Las Fibers en Windows son administradas por el Kernel. FALSO
+	11:23: MARIANA CARLOS entró a la sala
+	11:23: SEBASTIAN ISMAEL PIERINI entró a la sala
+	11:23 PABLO: no usa N:1 para fibers?
+	11:23 JUAN PABLO: 37.	Las Fibers en Windows son propiedad: PROCESO
+	11:24 JUAN PABLO: PABLO, PODES TENES N THREADS QUE CREEN M FIBRAS
+	11:24 JUAN PABLO: POR ESO DECIMOS QUE ES N:M
+	11:24: MAURO ERNESTO BARZOLA entró a la sala
+	11:25 PABLO: ah ok
+	11:25 JUAN PABLO: 38.	En Windows, el stack en modo Kernel es información del proceso. FALSO
+	11:25 MATIAS ARIEL: N procesos que creen M fibras?
+	11:25 JUAN PABLO: 39.	En Windows, toda la información de un Thread es mantenida en el espacio de memoria del sistema. FALSO
+	11:25 JUAN PABLO: NO, LOS THREADS CREAN FIBRAS
+	11:25 JUAN PABLO: FIJATE QUE LA IDEA ES QUE UN THREAD "SE TRANSFORMA" EN UNA FIBRA, Y A A PARTIR DE AHI CREA MAS
+	11:26 JUAN PABLO: Y CADA UNO DE LOS THREADS DEL PROCESO , PUEDE HACER ESO
+	11:26 JUAN PABLO: POR ESO EL N:M
+	11:26 JUAN PABLO: 40.	En Windows, cada thread tiene su Working Set. FALSO
+	11:26 MATIAS ARIEL: mmm ok, para mi el thread era del SO
+	11:26 JUAN PABLO: 41.	La información de planificación de un Thread es mantenida por: KERNEL
+	11:26 JUAN PABLO: 42.	El Kernel de Windows planifica las Fibers. FALSO
+	11:27: MAURO ERNESTO BARZOLA salió de la sala
+	11:27: FRANCO IVAN ZUCCARELLI salió de la sala
+	11:27 GERMAN: 40 1 por proceso no ?
+	11:27 JUAN PABLO: 43.	En Windows, una operación de E/S realizada por un Thread bloqueara a todo el proceso. FALSO
+	11:27 JUAN PABLO: 44.	En Windows, una operación de E/S realizada por una Fiber bloqueara al thread al que pertenece la misma. VERD
+	11:27 JUAN PABLO: SISI, EL WORKING SET ES DE MEMORIA, Y LA MANEJA PARA EL PROCESO
+	11:27 JUAN PABLO: AHI TERMINO THREADS, DUDAS????
+	11:28 PABLO: me qdo una con la 26
+	11:28 MARIANA: si en la preg 35, no es falsa?? porque tenia entendido q siera verdadera cuando era N:1
+	11:29: MAURO EZEQUIEL SORIA entró a la sala
+	11:29: RAMIRO ANDRES VALENCIA CRUZ salió de la sala
+	11:29 GONZALO EMANUEL: cada thread planifica sus fibers? o quien lo hace?
+	11:29 JUAN PABLO: MARIANA, ES N:1 RESPECTO A UN THREAD, PERO COMO UN PROCESO PUEDE TENER M THREADS, QUERIA N:M PARA EL PROCESO
+	11:30 JUAN PABLO: CUAL PABLO CON LA 26
+	11:30 PABLO: los KTL pueden ser atendidas por un procesador en particular, pero si tenemos un procesador solo en el sistema, no hay varios KTL atendiendo a los procesos?
+	11:30: FRANCO IVAN ZUCCARELLI entró a la sala
+	11:30 JUAN PABLO: SI, LA PLANIFICACION SE HACE "MANUALMENTE" PARA LAS FIBRAS
+	11:30 PABLO: no, pero es de solaris
+	11:30 GONZALO EMANUEL: ok
+	11:31 PABLO: o sea, si tenes 10 procesos, tenes 10 KTL peleando por entrar a 1 procesador, o no?
+	11:31 PABLO: o sea, 1 KTL x proceso
+	11:31 JUAN PABLO: PABLO, EN LA 26 HABRIA UN SOLO KLT
+	11:31 JUAN PABLO: SI HUBIERA UN SOLO PROCESADOR
+	11:32 JUAN PABLO: Y LOS LWP SE IRIAN ASOCIANDO A ESE SOLO
+	11:32 PABLO: yo me base en la diapositiva
+	11:33: MATIAS ARIEL SANTOLERI salió de la sala
+	11:33: MATIAS ARIEL SANTOLERI entró a la sala
+	11:33 JUAN PABLO: SI, PERDON, ME MAME AHI
+	11:33 ALEX PABLO: ¿o sea que en solaris siempre vas a tener la misma cantidad de KLTs que procesadores sin imporatr los procesos que haya??
+	11:33: LEANDRO AGUSTIN NAVAJAS entró a la sala
+	11:33 PABLO: no la tengo a mano, pero recuerdo que habia 1 LWP por proceso, que unia a los UTL (podia haber varios ULT)
+	11:33: MATIAS ARIEL SANTOLERI salió de la sala
+	11:33: MATIAS ARIEL SANTOLERI entró a la sala
+	11:34 PABLO: y ese LWP va a cada KLT, y pelean por entrar al porcesador, o no?
+	11:34 JUAN PABLO: ME CONFUNDI YO! EN LA 26 ES FALSA. ARME MAL LA RELACION CON EL KLT Y EL PROCESADOR,
+	11:34 JUAN PABLO: DISCULPAS
+	11:34 PABLO: ahh ok =)
+	11:35 JUAN PABLO: ALGUNA OTRA DUDA O SIGO
+	11:35 MATIAS ARIEL: no
+	11:35 JUAN PABLO: OK.
+	11:35 JOSé MARíA: LA 29 JUAN PABLO
+	11:35 PABLO: no
+	11:35 ALEX PABLO: entonces quedan varios KLT con un LWP asociado y varios ULT para cada LWP?
+	11:35 JUAN PABLO: 45.	Basta que una de las 4 condiciones de deadlock se cumpla, para que haya deadlock . FALSO
+	11:35 JUAN PABLO: SI ALEX
+	11:35 ALEX PABLO: ok gracias
+	11:36: LEANDRO AGUSTIN NAVAJAS salió de la sala
+	11:36 JUAN PABLO: 46.	La desventaja de usar algoritmos de prevención del deadlock, es que baja el grado de multiprogramación. FALSO,
+	11:36 JUAN PABLO: 47.	En un esquema de una instancia por tipo de recurso, cuando se encuentra un ciclo en un grafo de alocacion de recursos, la asignación de los recursos solicitados: B
+	11:36 JUAN PABLO: 48.	Todos los estados inseguros son deadlock. FALSO
+	11:37 JUAN PABLO: 49.	El algoritmo del Banquero sirve para sistemas con múltiples instancias de cada recurso. VERD
+	11:37 JUAN PABLO: 50.	Siempre que el grafo de recursos tiene ciclos, hay deadlock. FALSO
+	11:37 JUAN PABLO: ESTE TEMAS ES SUPER FACIL,. ALGUNA DUDA?
+	11:37 LISANDRO JOAQUíN: no
+	11:37 PABLO: no, ninguna
+	11:38 JUAN PABLO: 51.	Un buffer compartido entre dos procesos es una sección crítica. VERD
+	11:38 ALEX PABLO: en 50 es falso porque puede ser que haya mas de una instancia no?
+	11:38 JUAN PABLO: 52.	En el modelo productor-consumidor, el buffer compartido es una sección crítica. VERD
+	11:38 JUAN PABLO: 53.	En un programa solo puede haber una sección crítica. FALSO
+	11:38 PABLO: la 21 no es falsa?
+	11:38 PABLO: 51
+	11:38: LEANDRO AGUSTIN NAVAJAS entró a la sala
+	11:39: PABLO ALEJANDRO BALEZTENA salió de la sala
+	11:39: MELANIE ELIZABETH HUGHES entró a la sala
+	11:39 JUAN PABLO: 54.	Para ser una solución al problema de la sección críticas se deben cumplir 3 requerimientos: E. Mutua, .............. y espera limitada. CONTINUIDAD
+	11:39 PABLO: el uso del buffer por los procesos no es critico, para mi la implementacion de las operaciones sobre el buffer pueden ser criticas...
+	11:39 JUAN PABLO: LA 51 ES VERD, SI ES COMPARTIDO
+	11:40 JUAN PABLO: Y PERO EL BUFFER LO USAS CON OPERACIONES... O SEA, ES CRITCA
+	11:40 JUAN PABLO: SI NO "OPERAS" SOBRE E LBUFFER, PARA QUE LO QUERES
+	11:40 JUAN PABLO: UNA VARIABLE ENTERA NO ES PROBLEMA, SINO USARLA
+	11:40 PABLO: pero si solo lees no es critica
+	11:40 PABLO: el problema es si uno escribe y otro lee
+	11:41 JUAN PABLO: SI, SI QUERES JUSTIFICAR : "ES FALSO SI SOLO LEO"
+	11:41 JUAN PABLO: PERO COMO NO DETALLAMOS OPERACIONES EN PARTICULAR, PENSAMOS EN TODO USO POSIBLE PARA ESE BUFFER
+	11:42 PABLO: ok
+	11:42 JUAN PABLO: 55.	A la variable semáforo sólo puede accederse a través de sus operaciones. ACA ES "DEBERIA", SI UN SEMAFORO ES UN INTEGER, SE PUEDE USAR DE CUALQUIER FORMA, LO I MPORTARTE ES USAR LAS OPERACIONES PARA SIRVA COMO SEMAFORO
+	11:42 JUAN PABLO: 56.	El signal del semáforo siempre afecta al semáforo. DEPENDE, SI ES BINARIO NO
+	11:43 JUAN PABLO: 57.	La secuencia para el uso de un recurso es solicitud, uso y .............. LIBERACION
+	11:43 PABLO: verdadera 55?
+	11:43 JUAN PABLO: 58.	Semáforos es una herramienta útil para el problema de la sección crítica, pero no sirve para sincronización. FALSO
+	11:43 JUAN PABLO: LA 55 ES "DEPENDE", POR ESO ACLARE.
+	11:43 JUAN PABLO: 59.	Semáforos se implementa a través de primitivas que aporta el SO. LAS APORTA EL HW
+	11:44: PABLO ADOLFO CUYEU salió de la sala
+	11:44 JUAN PABLO: 60.	El proceso en espera, usando semáforos, puede usar busy waiting, colocándose en una cola asociada al semáforo. FALSO
+	11:44 JUAN PABLO: 61.	La instrucción test-and-set se ejecuta atómicamente, no así la instrucción swap. FALSO
+	11:44 JUAN PABLO: 62.	Con pasajes de mensajes es posible comunicar y sincronizar procesos . VERDA
+	11:45 JUAN PABLO: 63.	Los mensajes de IPC deben tener tamaño fijo. FALSO, DEPENDE COMO SE IMPLEMENTE LA TECNICA
+	11:45: ADRIANA ELIZABETH CARDACI entró a la sala
+	11:45 PABLO: la 62 no es depende? si es sincronico o asincronico?
+	11:45 JUAN PABLO: 64.	Con pasajes de mensajes, en la comunicación directa, el proceso que quiere comunicarse debe nombrar explicitamente al receptor o al emisor. VERD
+	11:46 JUAN PABLO: IGUAL SE PUEDEN USAR MENSAJES PARA SINCRONIZAR, MAS ALLA DE COMO FUNCIONA LOS MENSAJES
+	11:46: PABLO ALEJANDRO BALEZTENA entró a la sala
+	11:47 PABLO: se refiere a sincronizar variables? o sincronizarse como procesos?
+	11:47 PABLO: o sea, llegar a un punto para seguir "a la par"
+	11:47 JUAN PABLO: 65.	Con pasajes de mensajes, en la comunicación asimétrica, sólo el emisor nombra al receptor. VERD
+	11:48 JUAN PABLO: SINCRONIZAR COMO PROCESOS, POR EJEMPLO: ENVIAR MENSAJES PARA SIMULAR P Y V
+	11:48 JUAN PABLO: 66.	Con pasajes de mensajes, en la comunicación indirecta el mensaje se envía a un buzón o puerto. VERD
+	11:48 PABLO: okok
+	11:48: EMMANUEL ALLENDE entró a la sala
+	11:48 JUAN PABLO: 67.	En la comunicación indirecta, el propietario del buzón es el proceso que recibe. ACA DEPENDE DE LA IMPLEMENTACION TB
+	11:49 JUAN PABLO: SI EL PROPIERTARIO ES PROCESO, SI SERIA EN QUE RECIBE
+	11:49 JUAN PABLO: SI FUERA DEL SISTEMA, SERIA OTRA COSA
+	11:50: PABLO ALEJANDRO BALEZTENA salió de la sala
+	11:50 PABLO: seria del sistema?
+	11:50 JUAN PABLO: 68.	El usuario del buzón es quien envía. ES VERDADERA SI LA 67 ES VERDADERA. O SEA, SI EL BUZON ES PROPIEDAD DEL QUE RECIBE, EL QUE ENVIA ES EL USUARIO
+	11:50 JUAN PABLO: 69.	Cuando el propietario del buzón termina, el buzón desaparece. SIGUE LO MISMO, SI ES DEL SIST O NO.
+	11:50 JUAN PABLO: ENTIENDEN ESTE PUNTO DE "PROPIEDAD"
+	11:51 ALEX PABLO: mas o menos..
+	11:51 ALEX PABLO: ¿en qué caso es del sistema?
+	11:51 JUAN PABLO: DEPENDE DE LA IMPLEMENTACION DEL SO, A ESO ME REFIERO
+	11:52 JUAN PABLO: PUEDE QUE CUANDO UN PROCESO CREA UN MAILBOX, EL SO LO HACE PARTE DE SU CONTEXTO Y VIVE MMIENTRAS ESE PROCESO EXISTA
+	11:52 JUAN PABLO: O BIEN LO CREA Y FORMA PARTE DEL CONTEXTO PARA TODO EL SISTEMA, EN CUYO CASO NO DEPENDE DE UN PROCES OE NPARTICULAR
+	11:53 ADRIANA ELIZABETH: y eso cuando se determina?
+	11:53 JUAN PABLO: 70.	Con pasajes de mensajes, en sincronización, el envío con bloqueo es llamado asíncrono. FALSO
+	11:53 JUAN PABLO: LO DETERMINA LA IMPLEMENTACION DEL SO
+	11:54 JUAN PABLO: EN GENERAL EL DISEÑO DEL SO DEFINE ESO, NO LOS PROCESOS
+	11:54 ADRIANA ELIZABETH: ok
+	11:54 PABLO: ok
+	11:54 ALEX PABLO: ok
+	11:55 JUAN PABLO: 71.	El uso de mailbox es solamente para comunicación uno a uno de procesos. FALSO
+	11:55 JUAN PABLO: 72.	Qué consume, en la espera en semáforos, más ciclos de CPU? busy waiting
+	11:55 JUAN PABLO: 73.	En ambientes multiprocesador es mejor implementar una solución a la sección critica usando: B
+	11:55 JUAN PABLO: 74.	Qué pasa con las interrupciones de menor nivel cuando se eleva el nivel de procesador? SON IGNORADAS
+	11:56 JUAN PABLO: 75.	Tengo tantos spinlocks como estructuras a compartir. DEPENDE! DE NUEVO, CUESTION DE IMPLEMENTACION. PUEDO TENER UNO SOLO PARA TODAS LAS ESTRUCTURAS, O VARIOS. CON UNO SOLO ==> DEMASIADA CONTENCIÓN
+	11:56 JUAN PABLO: CON VARIOS ==> PELIGRO DE DEADLOCKS
+	11:57 JUAN PABLO: 76.	Que ocurre si cuando se eleva el nivel del procesador, el módulo que se esté ejecutando genera un page fault? DEPENDE DONDE SE ELEVE, SI EL NIVEL DEL PAGE FAULT ES MENOR QUE EL NIVEL ACTUAL DEL PROCESOR: FUISTE!
+	11:57 JUAN PABLO: 77.	Usar una variable cont, que voy incrementado o decrementando para implementar el modelo prod/cons... puede generar una race condition? VER
+	11:57 JUAN PABLO: 78.	En Unix System V, los objetos IPC creados son propiedad: a)
+	11:58 JUAN PABLO: 79.	La técnica de inhabilitar las interrupciones es óptima para el uso de procesos de usuario. FALSO
+	11:58 PABLO: pero no era que si se eleva el nivel del procesador tenia q tener todo cargado en memoria, sino explotaba?
+	11:58 JUAN PABLO: ACA SE REFIERE A SI PODEMOS DEJAR QUE UN PROCESO EN MODO USUARIO DETERMINE EL NIVEL AL QUE SE QUIERE IR
+	11:58 PABLO: sea el nivel q sea?
+	11:58 JUAN PABLO: ESTO DEBE SER PURAMENTE INTERNO
+	11:59: JOSé MARíA GARCíA CORLETO salió de la sala
+	11:59 JUAN PABLO: POR ESO ACLARE PABLO, DEPENDE , SI LA INTERRUPCION DE PAGE FAULT TIENE UN NUMERO MAYOR QUE EL NIVEL ACTUAL DEL PROCESOR, SE VA A PODER LLAMAR A LA RUTINA , SINO NO Y HABRIA UN CRASH
+	11:59 PABLO: ok
+	11:59 JUAN PABLO: 80.	La utilización de spinlocks es óptima para el uso de procesos de usuario. FALSO
+	12:00 JUAN PABLO: 81.	En Unix System V, en envio de mensajes es siempre bloqueante . FALSO
+	12:00 JUAN PABLO: 82.	En Unix System V, la recepción de mensajes es siempre bloqueante . FALSO
+	12:00 JUAN PABLO: 83.	En Unix System V, un proceso debe tener permisos de WRITE sobre una cola de mensajes para: a)
+	12:01 JUAN PABLO: 84.	En Unix System V, una región de memoria compartida deberá encontrarse en la misma dirección en todos los espacios de memoria de los procesos que la utilizan. FALSO
+	12:01 JUAN PABLO: EN ESTE PUNTO, EN NINGUN SO PASARIA ESO, DADO QUE CADA PROCESO TIENE SU ESPACIO PARTICULAR, INDEPENDIENTE DE LO FISICO
+	12:01 JUAN PABLO: AHI ARRACANCA TEMEA NUEVO: DUDAS???
+	12:02 GERMAN: no
+	12:02 ALEX PABLO: no
+	12:02 JUAN PABLO: VAYAN PONIENDO DUDAS Q VOY POR EL MATE
+	12:02 ADRIANA ELIZABETH: no
+	12:03 PABLO: no
+	12:03 ALEX PABLO: en la 71
+	12:03 JUAN PABLO: SI ALEX, QUE PASO
+	12:04 ALEX PABLO: no consume mas ciclos el spinlock en vez de busy waiting
+	12:04: JOSé MARíA GARCíA CORLETO entró a la sala
+	12:05 JUAN PABLO: ES QUE LA IMPLEMENTACION DE SPINLOCK ES CON BUSY WAITING
+	12:05 JUAN PABLO: NO CONSUME NI MAS NI MENOS, SINO QUE ES COMO FUNCIONAL
+	12:05 JUAN PABLO: FUNCIONA
+	12:05 ALEX PABLO: ah bueno
+	12:05 JUAN PABLO: LISTO?
+	12:05 ALEX PABLO: si
+	12:06 MARIELA FERNANDA: si
+	12:06 JUAN PABLO: vamos
+	12:06 PABLO: si
+	12:06 JUAN PABLO: 85.	En multiprocesadores, en la organización maestro esclavo, una syscall puede ser atendida en cualquiera de los procesadores. FALSO
+	12:06 JUAN PABLO: 86.	 En multiprocesadores, si cada CPU tiene su SO es posible que una CPU este saturada y otras sin trabajo productivo. VERD
+	12:07 JUAN PABLO: 87.	En multiprocesadores, la técnica de SMP no requiere de exclusión mutua para el acceso a las estructuras del kernel. FALSO
+	12:07 JUAN PABLO: 88.	En multiprocesadores, el uso de cache de CPU para la operación TSL soluciona problema de contención del bus. SI, PERO GENERA PROBLEMA DE SINCRONIZACION DE CACHE
+	12:07 PABLO: en la 86, no se van nivelando los procesadores?
+	12:07 JUAN PABLO: 89.	No existen diferencias en la planificación de procesos entre SO monoprocesadores y multiprocesadores . FALSO
+	12:07 PABLO: cosa de que no haya procesadores ociosos?
+	12:07 JUAN PABLO: PABLO, DEBERIAN ,
+	12:08 JUAN PABLO: 90.	En un sistema distribuido, todos los SO de las diferente computadoras que participan deben ser los mismos. VERD
+	12:09 GUIDO JOSé: no es falsa esa ?
+	12:09 JOSé MARíA: FALSA
+	12:09 JOSé MARíA: LA 90
+	12:09: CLAUDIA KARINA QUINTANA entró a la sala
+	12:09 JUAN PABLO: SI
+	12:09 JUAN PABLO: BIEN
+	12:09 JUAN PABLO: JAJAJA, ALGUNOS ESTAN ATENTOS
+	12:09 JUAN PABLO: QUERIA SABER SI ALGUIEN LEIA :)
+	12:09 GERMAN: ja
+	12:09 JUAN PABLO: 91.	En las multicomputadoras, cada CPU tiene su memoria. VERD
+	12:09 PABLO: ahhh yo no llegue! XD
+	12:10 GUIDO JOSé: jaja está bien
+	12:10 JUAN PABLO: 92.	En multicomputadoras, la comunicación entre procesos se realiza por: B
+	12:10 JUAN PABLO: 93.	En multicomputadoras, cada nodo puede correr un SO diferente. FALSO
+	12:11 JUAN PABLO: 94.	Las computadoras que forman una Grid deben ser todas iguales FAL
+	12:11 ADRIANA ELIZABETH: verdadero
+	12:11 ALEX PABLO: hay tengo una duda
+	12:11 JUAN PABLO: 95.	El middleware es una capa de software entre el Hardware y el Sistema Operativo FALSO
+	12:11 MARIELA FERNANDA: yo en la 93 puse falso también, elizabeth
+	12:11 ADRIANA ELIZABETH: en multicomputadoras, es como en una grid?
+	12:12 ALEX PABLO: en la 93 las computadoras puede ser distinta pero ¿los SO pueden ser diferentes?
+	12:12 ALEX PABLO: perdon 94
+	12:12 JUAN PABLO: CLARO , EL SO ES EL MISMO ALEX (93)
+	12:13 ALEX PABLO: me equivoqué era la 94
+	12:13 ADRIANA ELIZABETH: no entiendo la respuesta de la 93
+	12:14 MARIELA FERNANDA: podríamos pasar en limpio la 93 y 94 =)
+	12:14 JUAN PABLO: EN LA 93, LAS MULTICOP, TODOS LOS NODOS TIENEN EL MISMO SO
+	12:14 JUAN PABLO: EN LAS GRID, NO ES NECESARIO QUE SEAN IGUALES
+	12:15 JUAN PABLO: http://es.wikipedia.org/wiki/Computaci%C3%B3n_grid
+	12:15 FEDERICO EMMANUEL: Iguales quiere decir mismo SO ?
+	12:15 GERMAN: ni el hard ni el SO en la GRID verdad ?
+	12:15 JUAN PABLO: CLARO GERMAN
+	12:15 ALEX PABLO: ah ok
+	12:16 FEDERICO EMMANUEL: Bien
+	12:16 JUAN PABLO: EN MULTICOMPUTADORAS HABLAMOS DE SO
+	12:16 JUAN PABLO: EL HW PUEDE SER DIFF
+	12:16 JUAN PABLO: TENGO UNA LAGUNA, LES DIJE QUE VIRTUALIZACION ENTRABA EN ESTE EXAMEN O NO?
+	12:17 JUAN PABLO: O QUEDABA PARA EL 2DO
+	12:17 ALEX PABLO: en clase nos dijistes que quedaba para el segundo
+	12:17 PABLO: segun la ultima q diste, lo q daba lia no entraba
+	12:17 ALEX PABLO: pero en el correo pusistes que si
+	12:17 GERMAN: en el foro dijiste q entra
+	12:18 MARIELA FERNANDA: claro, en el foro pusiste que hasa lo que dio lia el viernes pasado entra
+	12:18 JUAN PABLO: SI, PERO DESPUES ENTRE EN DUDA
+	12:18 MARIELA FERNANDA: no sé hasta donde llegó lia, porque 20min antes de terminar la clase me tuve que ir
+	12:18 JUAN PABLO: BUENO, HAGAMOS ASI, DEJEMOS HASTA LAS PRIMERAS 2 DE MULTICOMPUTADORAS, Y VIRTUALIZACION PARA LA PROXIMA
+	12:19 CLAUDIA KARINA: ok
+	12:19 JUAN PABLO: ASI LO VEMOS BIEN
+	12:19 MARIANA: ella termino con MV y comento lo de la GRID muy por arriba por el tiempo
+	12:19 JUAN PABLO: AHORA MANDO MENSDAJE
+	12:19 ADRIANA ELIZABETH: ok
+	12:19 ALEX PABLO: ok
+	12:19 GUIDO JOSé: bien
+	12:19 JUAN PABLO: POR ESO
+	12:19 GERMAN: ok
+	12:19 PABLO: joya
+	12:19 JUAN PABLO: TRANSPARENCIA I Y II
+	12:19 JUAN PABLO: LA III Y Iv PARA LA PROX
+	12:20: GERMAN MARQUEZ salió de la sala
+	12:20 JUAN PABLO: DUDAS?
+	12:20 MARIANA: no
+	12:20 ALEX PABLO: no
+	12:20 PABLO: no
+	12:20 MARIELA FERNANDA: si, una consulta
+	12:20 FEDERICO: me quedo una duda con la pregunta 92
+	12:21 FEDERICO: 92.	En multicomputadoras, la comunicación entre procesos se realiza por: B
+	12:21: MARIANA CARLOS salió de la sala
+	12:21 JUAN PABLO: si
+	12:21 MARIELA FERNANDA: vas a tomar un ejercicio "práctico" con el tema de determinar las secuencias seguras...
+	12:21 JUAN PABLO: mmm, nose
+	12:21 JUAN PABLO: jajaja
+	12:21 FEDERICO: pero también no se podría utilizar RPC?
+	12:21 JUAN PABLO: entiendan el algoritmo, es facil
+	12:21 PABLO: no le des ideas!!! XD
+	12:22 MARIELA FERNANDA: porque el año pasado, yo no lo había repasado y lo tomaste!! y me quise matar jaja
+	12:22 JUAN PABLO: federico, RPC se apoya sobre mensajes, se podria decir que mensajes es la construccion de mnas bajo nivel
+	12:22 PABLO: pero en el parcial teorico, no va practica cheeee! jajaja
+	12:22 JUAN PABLO: estudienlo , razonenlo mas que nada
+	12:22 FEDERICO: bien, gracias
+	12:22 JUAN PABLO: todo lo que plantea es sentido comun
+	12:22 MARIELA FERNANDA: perdón pablo, no le quiero dar ideas, pero el año pasado se le ocurrio solo y me quise matar jajajja
+	12:22 ALEX PABLO: ¿pero entonces RPC sería una respuesta valida?
+	12:23 JUAN PABLO: seria valida, si
+	12:23 ALEX PABLO: ok
+	12:24 JUAN PABLO: si tienen mas dudas, manden mensajes al foro, que estoy de reposo asi que respondo rapido!
+	12:24 MARIELA FERNANDA: bárbaro
+	12:24 JUAN PABLO: recuenden anotarse para rendir
+	12:24 ALEX PABLO: ok no hay problema
+	12:24 ADRIANA ELIZABETH: ok
+	12:24 PABLO: joya
+	12:24 JUAN PABLO: a estudiar, que es facul
+	12:24 JUAN PABLO: facil
+	12:24 ALEX PABLO: ¿cuántas preguntas van a ser?
+	12:25 JUAN PABLO: 20
+	12:25 JUAN PABLO: el formato no cambia
+	12:25 PABLO: cuantas para aprobar? :P
+	12:25 JUAN PABLO: esta en el regimenn
+	12:25 ALEX PABLO: ok
+	12:25 JUAN PABLO: bueno chicos, cualquier cosa escriban
+	12:25 JUAN PABLO: saludos!!
+	12:25 MARIELA FERNANDA: listo, saludos
+	12:26 PABLO: adios!
+	12:26 FEDERICO EMMANUEL: Saludos!
+	12:26 JUAN PABLO: el chat queda grabado, si quiere consultar luego
+	12:26 ADRIANA ELIZABETH: gracias, saludos
+	12:26 GUIDO JOSé: suerte

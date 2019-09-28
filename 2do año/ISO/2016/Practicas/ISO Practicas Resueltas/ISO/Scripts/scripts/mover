@@ -1,0 +1,22 @@
+#!/bin/bash
+#implemente el comando mover. Recibe dos parametros, el primero el origen y el segundo el destino
+#debera mantener un archivo de log en /var/log/mover donde por cada invocacion del script
+#debera escribir una linea que contenga: "El archivo <nombre> ha sido movido a <destino>
+
+
+if [ $# -eq 2 ]
+then
+	if [ -e $1 ]
+	then
+		mv $1 $2
+		echo "El archivo $1 ha sido movido a $2" >> /home/frank/Escritorio/mover
+		exit 0
+	else
+		echo No existe el archivo/directorio origen
+		exit 1
+	fi
+	
+else
+	echo Numero de parametros incorrectos
+	exit 1
+fi

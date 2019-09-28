@@ -1,0 +1,400 @@
+Pregunta 1
+Parcialmente correcta
+Puntúa 0,63 sobre 1,00
+Enunciado de la pregunta
+Asocie los siguientes operadores de bash con sus significados o comandos equivalentes.
+
+echo cadena | grep archivo
+
+Respuesta 1 Incorrecta
+$(./archivo)
+
+Respuesta 2 Correcta
+[ expresión ]
+
+Respuesta 3 Correcta
+(( expresión ))
+
+Respuesta 4 Correcta
+cadena=`./archivo`
+
+Respuesta 5 Incorrecta
+echo cadena > archivo
+
+Respuesta 6 Correcta
+echo $(( expresión ))
+
+Respuesta 7 Correcta
+echo cadena >> archivo
+
+Respuesta 8 Incorrecta
+Pregunta 2
+Parcialmente correcta
+Puntúa 0,50 sobre 1,00
+Enunciado de la pregunta
+¿Cualés de las siguientes son funciones correctamente definidas?
+
+Seleccione una o más de una:
+a.
+x(1, 2){
+    echo $1 | grep $2
+}
+ Incorrecta
+b.
+x(){
+    echo $1 | grep $2
+}
+ Correcta
+c.
+function x(1, 2){
+    echo $1 | grep $2
+}
+
+ Incorrecta
+d.
+function x{
+    echo $1 | grep $2
+}
+ e.
+function x(1, 2); do
+    echo $1 | grep $2
+done
+Pregunta 3
+Parcialmente correcta
+Puntúa 0,50 sobre 1,00
+Enunciado de la pregunta
+¿Cuales de las siguientes equivalencias son ciertas?
+
+Seleccione una o más de una:
+a.
+find -name archivo
+# equivale a:
+echo archivo | find -name
+ Incorrecta
+b.
+grep ac archivo
+# equivale a:
+cat archivo | grep ac
+ Correcta
+c.
+find -name archivo
+# equivale a:
+find . -name archivo
+ d.
+echo hola | cat > salida
+# equivale a:
+echo hola > salida
+ Correcta
+e.
+cat archivo | wc -c
+# equivale a:
+wc -c archivo | cut -d' ' -f1
+ f.
+echo hola | cat > salida
+# equivale a:
+cat hola > salida
+Pregunta 4
+Incorrecta
+Puntúa 0,00 sobre 1,00
+Enunciado de la pregunta
+¿Qué hace la siguiente secuencia de comandos?
+
+cat /etc/inittab | grep initdefault | cut -d: -f2
+Seleccione una:
+a. Imprime initdefault
+b. Imprime el runlevel por defecto
+c. Imprime el path del binario init que se usará
+d. Imprime el runlevel actual Incorrecta
+e. Imprime siempre un 2
+Pregunta 5
+Correcta
+Puntúa 1,00 sobre 1,00
+Enunciado de la pregunta
+Qué opciones son verdaderas respecto a la secuencia de comandos:
+
+(test -f archivo && grep menta archivo && echo Z) || echo Q
+Seleccione una o más de una:
+a. Si "archivo" existe y contiene el string "menta" imprime "Q", sino imprime "Z"
+b. Sin los paréntesis el resultado sería el mismo Correcta
+c. Siempre imprime "Z"
+d. Sin los paréntesis el resultado sería distinto
+e. Si "archivo" existe y contiene el string "menta" imprime "Z", sino imprime "Q" Correcta
+f. Siempre imprime "Q" Incorrecta
+Pregunta 6
+Incorrecta
+Puntúa 0,00 sobre 1,00
+Enunciado de la pregunta
+Supongamos que tenemos la siguiente información:
+
+eth2 Link encap:Ethernet HWaddr 00:e0:7d:b4:1c:38
+inet addr:192.168.1.112 Bcast:255.255.255.255 Mask:255.255.255.0
+inet6 addr: fe80::2e0:7dff:feb4:1c38/64 Scope:Link
+UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1
+RX packets:115588267 errors:0 dropped:0 overruns:0 frame:0
+TX packets:35601221 errors:0 dropped:0 overruns:0 carrier:0
+collisions:0 txqueuelen:1000
+RX bytes:3240134640 (3.2 GB) TX bytes:2042178372 (2.0 GB)
+Interrupt:20 Base address:0xce00
+
+que resultado se obtiene al ejecutar:
+
+ifconfig eth2 | grep inet | cut -d : -f 2 | cut -d " " -f 1
+
+Seleccione una:
+a. 255.255.255.255
+b. fe80::2e0:7dff:feb4:1c38/64
+c. 00:e0:7d:b4:1c:38 Incorrecta
+d. Ningun resultado
+e. 192.168.1.112
+Pregunta 7
+Parcialmente correcta
+Puntúa 0,33 sobre 1,00
+Enunciado de la pregunta
+Se desea hacer un script que imprima la lista de argumentos que recibe. ¿Cuales de las siguientes implementaciones son correctas?.
+
+Seleccione una o más de una:
+a.
+#!/bin/sh
+for arg in argv; do
+    echo $arg
+done
+ Incorrecta
+b.
+#!/bin/sh
+for arg in $*; do
+    echo $arg
+done
+ Correcta
+c.
+#!/bin/sh
+echo $#
+
+ d.
+#!/bin/sh
+for arg in $@; do
+    echo $arg
+done
+
+ e.
+#!/bin/sh
+echo $*
+ f.
+#!/bin/sh
+for arg in ${argv[*]}; do
+    echo $arg
+done
+ Incorrecta
+Pregunta 8
+Correcta
+Puntúa 1,00 sobre 1,00
+Enunciado de la pregunta
+Se desea hacer un script que imprima su primer argumento en pantalla, por ejemplo:
+
+$ ./mi_script.sh "Hola Mundo"
+
+debe imprimir "Hola Mundo" (sin las comillas).
+
+¿Cuál de las siguientes es una implementación correcta del script?
+
+Seleccione una:
+a.
+#!/bin/sh
+echo argv[0]
+ b.
+#!/bin/sh
+echo $0
+ c.
+#!/bin/sh
+echo ${argv[0]}
+
+ d.
+#!/bin/sh
+echo $argv[1]
+ e.
+#!/bin/sh
+echo argv[1]
+ f.
+#!/bin/sh
+echo $1
+ Correcta
+g.
+#!/bin/sh
+echo ${argv[1]}
+Pregunta 9
+Incorrecta
+Puntúa 0,00 sobre 1,00
+Enunciado de la pregunta
+¿Qué hace el siguiente script?
+
+#!/bin/sh
+a=$(wc -c xyz | cut -d' ' -f1)
+expr $a / 1024 / 1024
+Seleccione una:
+a. Imprime el tamaño en MiB del archivo "xyz"
+b. Falla porque el valor calculado por "expr" no es almacenado en ninguna variable.
+c. Cuenta la cantidad de caracteres en el string "xyz" y la pasa a MiB (obviamente da cero) Incorrecta
+d. Falla ya que "wc" debe recibir los datos por la entrada estándar.
+e. Comprime el archivo "xyz" a "xyz.wc" e imprime el tamaño en MiB del archivo comprimido.
+Pregunta 10
+Correcta
+Puntúa 1,00 sobre 1,00
+Enunciado de la pregunta
+¿Con que simbolo se declara un comentario?
+Seleccione una:
+a. # Correcta
+b. %
+c. ;
+d. //
+e. ?
+Pregunta 11
+Correcta
+Puntúa 1,00 sobre 1,00
+Enunciado de la pregunta
+¿Cuales de las siguientes sintaxis de funciones es correcta?
+
+Seleccione una:
+a. 
+mayor(a,b) {
+if [ $a > $b ]; then echo $a; else echo $b; fi 
+}
+b. 
+mayor() {
+if [ $1 > $2 ]; then echo $1; else echo $2; fi 
+} Correcta
+c. 
+funtion mayor() {
+if [ $1 > $2 ]; then echo $1; else echo $2; fi 
+}
+Pregunta 12
+Incorrecta
+Puntúa 0,00 sobre 1,00
+Enunciado de la pregunta
+¿Cuales de las siguientes sintaxis del comando for son correctas?
+
+Seleccione una o más de una:
+a. 
+for i in `seq 1 100` do
+echo "$i"
+done Incorrecta
+b. 
+for i in `seq 1 100`
+do
+echo "$i"
+done
+c. for i in `seq 1 100`; do echo "$i"; done Correcta
+d. 
+for $i in `seq 1 100`
+do
+echo "$i" 
+done
+Pregunta 13
+Correcta
+Puntúa 1,00 sobre 1,00
+Enunciado de la pregunta
+¿Cuales de las siguientes sintaxis del comando if son correctas?
+
+Seleccione una o más de una:
+a. if test -d /home/pepe then echo "es un directorio" fi
+b. if test -r /home/pepe; then echo "Tengo permisos de lectura"; fi Correcta
+c. 
+if [ "$nombre" == "Maria" ] 
+then 
+echo "Es igual" 
+fi Correcta
+d. 
+if ["$nombre" == "Maria"] 
+then echo "Es igual" 
+fi
+Pregunta 14
+Correcta
+Puntúa 1,00 sobre 1,00
+Enunciado de la pregunta
+¿Cuales de los siguientes usos de arreglos son correctos?
+Seleccione una o más de una:
+a. echo ${arreglo[1]} Correcta
+b. arreglo=(3 4 5) Correcta
+c. arreglo = (3 4 5)
+d. echo ${#arreglo[*]} Correcta
+e. echo $arreglo[2]
+Pregunta 15
+Correcta
+Puntúa 1,00 sobre 1,00
+Enunciado de la pregunta
+¿Cuales de los siguientes usos de expr es correcto?
+Seleccione una o más de una:
+a. expr length "PEPE" Correcta
+b. expr 4 5 *
+c. expr 5 != 5 Correcta
+d. expr - 6 5
+e. expr 4 + 5 Correcta
+Pregunta 16
+Correcta
+Puntúa 1,00 sobre 1,00
+Enunciado de la pregunta
+¿Cuales de los siguientes usos de variables son correctos?
+
+Seleccione una o más de una:
+a. echo APELLIDO
+b. echo ${DIRECCION} Correcta
+c. DIRECCION="56 nro 436" Correcta
+d. var NOMBRE="pepe"
+e. echo $NOMBRE Correcta
+f. APELLIDO = "sanchez"
+Pregunta 17
+Correcta
+Puntúa 1,00 sobre 1,00
+Enunciado de la pregunta
+¿Que comillas se utilizas para el uso del comando sustitucion?
+Seleccione una:
+a. ^ ^
+b. ` ` Correcta
+c. " "
+d. ' '
+Pregunta 18
+Correcta
+Puntúa 1,00 sobre 1,00
+Enunciado de la pregunta
+¿Que hace el comando "find / –name pepe 2> /dev/null" ?
+Seleccione una:
+a. crea un archivo vacio en /dev/null
+b. muestra los archivos llamados pepe, siempre y cuando tenga permisos de acceso a ellos Correcta
+c. envia la salida del comando al /dev/null
+Pregunta 19
+Correcta
+Puntúa 1,00 sobre 1,00
+Enunciado de la pregunta
+¿Que hace el comando test -w /home/pepe/ ?
+
+Seleccione una:
+a. Evalua si el archivo o directorio existe
+b. Evalua si el archivo o directorio existe y es un directorio
+c. Evalua si el archivo o directorio existe y se tiene el permiso de escritura Correcta
+d. Evalua si el archivo o directorio existe y es un archivo regular
+e. Evalua si el archivo existe o directorio y se tiene el permiso de lectura
+Pregunta 20
+Correcta
+Puntúa 1,00 sobre 1,00
+Enunciado de la pregunta
+¿Que información tiene la variable $#?
+Seleccione una:
+a. Ninguna es solo un comentario
+b. La cantidad de arreglos utilizadas en el script
+c. La cantidad de parametros enviados Correcta
+d. La cantidad de variables utilizadas en el script
+Pregunta 21
+Correcta
+Puntúa 1,00 sobre 1,00
+Enunciado de la pregunta
+¿Que resultado tiene el siguiente comando "cat /etc/passwd | cut -f2 -d: | grep a" ?
+Seleccione una:
+a. No imprime nada Correcta
+b. Imprime las password de los usuarios que contenga una letra a
+c. Imprime los nombre de usuario que contenga una letra a
+d. Imprime los homes de los usuarios que tienen una letra a
+Pregunta 22
+Incorrecta
+Puntúa 0,00 sobre 1,00
+Enunciado de la pregunta
+¿Qué imprime la siguiente secuencia de comandos? (Responder solamente el resultado de la secuencia de comandos, sin explicaciones).
+
+echo 1zTrao dpaoqda | tr Taqz1rd irbuQea
