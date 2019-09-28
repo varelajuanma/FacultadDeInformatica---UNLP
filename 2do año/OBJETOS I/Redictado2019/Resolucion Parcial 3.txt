@@ -1,0 +1,355 @@
+Object subclass: #Material
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'OORedictado - Parcial 3'!
+
+!Material methodsFor: 'as yet unclassified' stamp: 'Matias 6/21/2019 17:24'!
+ajustarCoeficiente:unVolumen
+self subclassResponsibility .! !
+
+!Material methodsFor: 'as yet unclassified' stamp: 'Matias 6/21/2019 17:24'!
+costoMt3
+self subclassResponsibility .! !
+
+
+Material subclass: #Acero
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'OORedictado - Parcial 3'!
+
+!Acero methodsFor: 'as yet unclassified' stamp: 'Matias 6/21/2019 17:27'!
+ajustarCoeficiente: unVolumen
+	^unVolumen *0.9.! !
+
+!Acero methodsFor: 'as yet unclassified' stamp: 'Matias 6/21/2019 17:40'!
+densidad
+ ^8000.! !
+
+!Acero methodsFor: 'as yet unclassified' stamp: 'Matias 6/21/2019 17:29'!
+costoMt3
+	^1000.! !
+
+
+Material subclass: #Aluminio
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'OORedictado - Parcial 3'!
+
+!Aluminio methodsFor: 'as yet unclassified' stamp: 'Matias 6/21/2019 17:28'!
+ajustarCoeficiente: unVolumen
+(unVolumen <3) ifTrue:[ ^unVolumen *0.8.]
+				ifFalse:[ ^unVolumen *0.95.]! !
+
+!Aluminio methodsFor: 'as yet unclassified' stamp: 'Matias 6/21/2019 17:41'!
+densidad
+^ 3000 .! !
+
+!Aluminio methodsFor: 'as yet unclassified' stamp: 'Matias 6/21/2019 17:29'!
+costoMt3
+^ 1500! !
+
+
+OrderedCollection subclass: #ParcialCollection
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'OORedictado - Parcial 3'!
+
+!ParcialCollection methodsFor: 'as yet unclassified' stamp: 'Matias 6/21/2019 17:02'!
+collectCond: unaCondicion ifTrue: bloque1 ifFalse: bloque2
+
+	"donde unaCondicion, bloque1 y bloque2 son bloques con un parámetro de entrada cada uno. Este método funciona parecido a collect: pero en lugar de aplicar el mismo bloque de código a cada elemento de la colección receptora del mensaje, aplica bloque1 a los elementos para los cuales vale unaCondición y bloque2 a aquellos para los que no lo vale."
+
+^ self collect: [ :item| (unaCondicion value:item) 
+			ifTrue: [ bloque1 value:item ]
+			ifFalse: [ bloque2 value:item ]  ]
+! !
+
+
+TestCase subclass: #ParcialCollectionTestCase
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'OORedictado - Parcial 3'!
+
+!ParcialCollectionTestCase methodsFor: 'tests' stamp: 'Matias 6/21/2019 17:12'!
+testEjemploExamen
+|col resultado|
+
+col:= ParcialCollection new.
+col addAll: #(1 2 3 4).
+
+resultado:=col collectCond: [:i | i even] ifTrue: [:i | i + 1] ifFalse: [:i | i*3] .
+self assert: (resultado includesAll:  #(3 3 9 5))
+! !
+
+
+Object subclass: #Pieza
+	instanceVariableNames: 'color material peso'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'OORedictado - Parcial 3'!
+
+!Pieza methodsFor: 'accessing' stamp: 'Matias 7/4/2019 12:52'!
+peso
+self volumen >0 ifTrue:[
+^self volumen * self material densidad.
+]
+ifFalse:[^nil].! !
+
+!Pieza methodsFor: 'accessing' stamp: 'Matias 7/4/2019 11:19'!
+material:m
+
+material:=m.! !
+
+!Pieza methodsFor: 'accessing' stamp: 'Matias 7/4/2019 11:19'!
+color:c
+
+color:=c.! !
+
+!Pieza methodsFor: 'accessing' stamp: 'Matias 7/4/2019 12:13'!
+peso: anObject
+	peso := anObject! !
+
+!Pieza methodsFor: 'accessing' stamp: 'Matias 7/4/2019 11:27'!
+material
+
+^material.! !
+
+
+!Pieza methodsFor: 'accesing' stamp: 'Matias 7/4/2019 11:52'!
+color
+	^ color! !
+
+
+!Pieza methodsFor: 'as yet unclassified' stamp: 'Matias 7/4/2019 12:01'!
+costoMateriales
+
+ ^ self  material costoMt3 * (self material ajustarCoeficiente:  (self volumen)).! !
+
+!Pieza methodsFor: 'as yet unclassified' stamp: 'Matias 6/21/2019 17:32'!
+superficie
+
+ ^ self subclassResponsibility .! !
+
+!Pieza methodsFor: 'as yet unclassified' stamp: 'Matias 6/21/2019 17:32'!
+costoPintura
+
+ ^ self superficie *500.! !
+
+!Pieza methodsFor: 'as yet unclassified' stamp: 'Matias 6/21/2019 17:45'!
+costoTransporte
+
+"El costo de transporte depende del peso total a transportar. Menos de una tonelada es $1000, entre una y 5 toneladas es $800 por cada tonelada y más de 5 toneladas es de $500 por cada tonelada."
+
+(self peso <1) ifTrue: [ ^1000  ].
+(self peso between:1 and:5) ifTrue: [ ^800*self peso  ].
+ ^500* self peso.
+					! !
+
+!Pieza methodsFor: 'as yet unclassified' stamp: 'Matias 6/21/2019 17:19'!
+costoProduccionPieza
+
+ ^ self costoMateriales + self costoPintura.! !
+
+!Pieza methodsFor: 'as yet unclassified' stamp: 'Matias 6/21/2019 17:31'!
+volumen
+self subclassResponsibility ! !
+
+
+Pieza subclass: #Cilindro
+	instanceVariableNames: 'radio altura'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'OORedictado - Parcial 3'!
+
+!Cilindro methodsFor: 'as yet unclassified' stamp: 'Matias 6/21/2019 17:37'!
+superficie
+^(2 * Float pi * radio  * altura) + (2 * Float pi * (radio squared)).! !
+
+!Cilindro methodsFor: 'as yet unclassified' stamp: 'Matias 6/21/2019 17:36'!
+volumen
+^Float pi * radio squared * altura
+! !
+
+
+!Cilindro methodsFor: 'initialization' stamp: 'Matias 7/4/2019 10:56'!
+initializeDeRadio:r yAltura:a.
+radio:=r.
+altura:=a.! !
+
+!Cilindro methodsFor: 'initialization' stamp: 'Matias 7/4/2019 12:00'!
+costoM3
+^1000! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+Cilindro class
+	instanceVariableNames: ''!
+
+!Cilindro class methodsFor: 'instance creation' stamp: 'Matias 7/4/2019 10:56'!
+newDeRadio:r yAltura:a
+^super new initializeDeRadio:r yAltura:a.! !
+
+
+Pieza subclass: #Prisma
+	instanceVariableNames: 'ladoMayor ladoMenor altura'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'OORedictado - Parcial 3'!
+
+!Prisma methodsFor: 'as yet unclassified' stamp: 'Matias 6/21/2019 17:38'!
+superficie
+^ (ladoMayor * ladoMenor * 2) + (ladoMayor * 2 + ladoMenor * 2) * altura
+
+! !
+
+!Prisma methodsFor: 'as yet unclassified' stamp: 'Matias 6/21/2019 17:38'!
+volumen
+^ladoMayor * ladoMenor * altura! !
+
+
+!Prisma methodsFor: 'initialization' stamp: 'Matias 7/4/2019 11:22'!
+initializeLadoMayor:my yLadoMenor:mn yAltura:a
+ladoMayor := my.
+ladoMenor := mn.
+altura:=a.! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+Prisma class
+	instanceVariableNames: ''!
+
+!Prisma class methodsFor: 'instance creation' stamp: 'Matias 7/4/2019 11:21'!
+newDeLadoMayor:my yLadoMenor:mn yAltura:a
+^super new initializeLadoMayor:my yLadoMenor:mn yAltura:a! !
+
+
+TestCase subclass: #ReporteTestCase
+	instanceVariableNames: 'acero cilindro reporte aluminio prisma'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'OORedictado - Parcial 3'!
+
+!ReporteTestCase methodsFor: 'initialization' stamp: 'Matias 7/4/2019 12:05'!
+setUp
+
+acero:=Acero new.
+aluminio:=Aluminio new.
+cilindro:= Cilindro newDeRadio: 10 yAltura: 10.
+cilindro material:acero; color:'rojo'.
+
+prisma:= 
+Prisma newDeLadoMayor:3 yLadoMenor:3 yAltura:11.
+
+prisma material:aluminio; color:'amarillo'.
+
+reporte:=ReporteVenta new.
+reporte agregarPieza:cilindro.
+reporte agregarPieza:prisma.
+
+
+! !
+
+
+!ReporteTestCase methodsFor: 'tests' stamp: 'Matias 7/4/2019 12:15'!
+testImprimir
+
+reporte imprimir.! !
+
+!ReporteTestCase methodsFor: 'tests' stamp: 'Matias 7/4/2019 12:06'!
+testPrecioPiezas
+|total|
+total:= reporte precioPiezas.
+
+self assert:(total >0).! !
+
+!ReporteTestCase methodsFor: 'tests' stamp: 'Matias 7/4/2019 11:52'!
+testSuperficieDeColor
+
+|total|
+total:= reporte superficieDeColor: 'amarillo'.
+
+self assert:total equals:396.! !
+
+!ReporteTestCase methodsFor: 'tests' stamp: 'Matias 7/4/2019 11:34'!
+testVolumenDeMaterial
+|total|
+total:= reporte volumenDeMaterial: acero.
+
+self assert:total equals:3141.5926535897934.! !
+
+!ReporteTestCase methodsFor: 'tests' stamp: 'Matias 7/4/2019 12:06'!
+testPrecioFlete
+|total|
+total:= reporte precioFlete .
+
+self assert:(total >0).! !
+
+
+Object subclass: #ReporteVenta
+	instanceVariableNames: 'nombre nroCliente piezas'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'OORedictado - Parcial 3'!
+
+!ReporteVenta methodsFor: 'as yet unclassified' stamp: 'Matias 7/4/2019 11:51'!
+superficieDeColor: unNombreDeColor
+"Recibe como parámetro un color (un string, por ejemplo 'Rojo'). Retorna la suma de las superficies externas de todas las piezas pintadas con ese color"
+^ (piezas select:[:pieza| pieza color=unNombreDeColor ]) sumNumbers: [ :pieza| pieza superficie  ]! !
+
+!ReporteVenta methodsFor: 'as yet unclassified' stamp: 'Matias 7/4/2019 12:15'!
+precioTotal
+
+ ^self precioFlete +self precioPiezas .! !
+
+!ReporteVenta methodsFor: 'as yet unclassified' stamp: 'Matias 7/4/2019 12:22'!
+imprimir
+"Imprime una cabecera con el precio de producción, precio de flete y precio total y un detalle con una línea por cada pieza incluida indicando nombre de material, color de pintura y precio".
+
+Transcript show:' Costo producción', (self precioPiezas asString);cr;
+			show: ' Costo Flete', (self precioFlete asString) ;cr;
+			show:' Precio total', (self precioTotal asString) ;cr.
+			
+piezas do:[:pieza|
+	Transcript show:'Material',(pieza material class name), ' - ' ,(pieza color), (pieza costoProduccionPieza asString );cr
+	
+	 ]! !
+
+!ReporteVenta methodsFor: 'as yet unclassified' stamp: 'Matias 7/4/2019 12:11'!
+precioFlete
+"Retorna el precio del flete de acuerdo con el peso a transportar"
+|total|
+total:= piezas sumNumbers: [:pieza| pieza peso    ].
+
+total <1000 ifTrue:[^1000].
+(total between: 1000 and: 5000) ifTrue:[^total/1000*800].
+^total/1000*500.
+					
+					
+					
+! !
+
+!ReporteVenta methodsFor: 'as yet unclassified' stamp: 'Matias 7/4/2019 11:58'!
+precioPiezas
+"Retorna la suma del precio de todas las piezas incluido en el reporte"
+
+^ piezas sumNumbers: [:pieza| pieza costoProduccionPieza   ].! !
+
+!ReporteVenta methodsFor: 'as yet unclassified' stamp: 'Matias 7/4/2019 11:34'!
+volumenDeMaterial: unMaterial
+"Recibe como parámetro un material y retorna la suma de los volúmenes de todas las piezas hechas en ese material"
+^ (piezas select:[:pieza| pieza material=unMaterial ]) sumNumbers:[:pieza| pieza volumen ].! !
+
+
+!ReporteVenta methodsFor: 'initialization' stamp: 'Matias 7/4/2019 11:33'!
+initialize
+piezas := OrderedCollection new.! !
+
+
+!ReporteVenta methodsFor: 'accessing' stamp: 'Matias 7/4/2019 11:33'!
+agregarPieza: pieza 
+	piezas add:pieza.! !
