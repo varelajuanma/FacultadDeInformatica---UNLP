@@ -1,0 +1,121 @@
+EJEMPLOS ADICIONALES.
+
+PRODUCTOS = (idproducto,nombre,codigobarra,preciocosto)
+CLIENTES = (idcliente,nombre,direccion,idlocalidad)
+FACTURAS = (idfactura,fecha,montofactura,idcliente)
+RENGLONES = (idfactura,#renglon,idproducto,precioventa,cantidad)
+LOCALIDADES = (idlocalidad,nombre)
+
+1) presentar todas las facturas de agosto de 2008:
+	
+	SELECT *
+	FROM facturas
+	WHERE year (fecha) = 2008 and month (fecha) = 8
+
+2) mostrar la direcciones de los clientes que viven en La Plata
+
+	SELECT c.direccion
+	FROM clientes c
+	     INNER JOIN localidades l ON (c.idlocalidad = l.idlocalidad)
+	WHERE l.nombre = 'La Plata'
+
+3) mostrar todas las facturas (fecha y monto) del cliente Garcia ordenadas por fecha de emision (de la mas reciente a la menos reciente) y por monto.
+
+	SELECT f.fecha,f.montofactura
+	FROM facturas f
+	     INNER JOIN clientes c ON (f.idcliente = c.idcliente)
+	WHERE c.nombre = 'Garcia'
+	ORDER BY f.fecha DESC, montofactura
+
+4) presentar el monto total facturado de los primeros 15 dias de enero del 2009
+
+	SELECT SUM(montofactura)
+	FROM factura
+	WHERE fecha BETWEEN 01/01/2009 and 15/01/2009
+
+5) presentar el nombre del cliente siempre que haya comprado el producto "Jabon en polvo", ordenado por nombre del cliente.
+
+	SELECT c.nombre
+	FROM clientes c
+	     INNER JOIN facturas f ON (c.idcliente = f.idcliente)
+	     INNER JOIN renglones r ON (f.idfactura = r.idfactura)
+	     INNER JOIN productos p ON (r.idproducto = p.idproducto)
+	WHERE p.nombre = 'Jabon en polvo'
+	ORDER BY c.nombre
+
+6) informar cuantos clientes compraron algo este mes
+
+	SELECT COUNT (DISTINCT f.idcliente)
+	FROM facturas f
+	     INNER JOIN clientes c ON (f.idcliente = c.idcliente)
+	     INNER JOIN localidades l ON (c.idlocalidades = l.idlocalidades)
+	WHERE MONTH (CURRENT DAY () ) = MONTH (f.fecha) AND
+	      YEAR (CURRET DAY () ) = YEAR (f.fecha)
+
+7) informar cual es el producto mas barato
+	
+	SELECT p.nombre
+	FROM productos p
+	WHERE p.preciocosto = (SELECT MIN (preciocosto)
+				FROM productos)
+
+8) presentar todas las facturas del mes de enero del 2009 excepto la de mayor monto en ese mes.
+
+	SELECT f.idfactura,f.fecha,f.montofactura
+	FROM facturas f
+	WHERE (MONTH (fecha) = 1) AND (YEAR (fecha) = 2009) AND
+	      montofactura < (SELECT MAX (montofactura)
+			      FROM facturas
+			      WHERE (MONTH(fecha) = 1 AND YEAR(fecha) = 2009)
+
+9) informar las facturas que incluyan productos con costo inferior a $30
+
+	SELECT f.idfactura,f.fecha,f.montofactura
+	FROM facturas f
+	     INNER JOIN renglones r ON (f.idfactura = r.idfactura)
+	WHERE r.idproducto IN (SELECT p.idproductos
+				FROM productos p
+				WHERE p.preciocosto < 30)
+
+10) informar el total de las ventas realizadas a cada cliente
+
+	SELECT c.nombre, SUM(montofactura)
+	FROM clientes c
+	     INNER JOIN facturas f ON (c.idcliente = f.idcliente)
+	GROUP BY c.nombre
+
+11) informar el total de ventas de los clientes que hayan comprado mas de 5 productos(no diferentes)
+
+	SELECT c.nombre, SUM(montofactura)
+	FROM clientes c
+	     INNER JOIN facturas f ON (c.idcliente = f.idcliente)
+	     INNER JOIN renglores r ON (f.idfactura = r.idfactura)
+	GROUP BY c.nombre
+	HAVING SUM(r.cantidad) > 5 
+
+12) informar los nombres de las localidades correspondientes a clientes que hayan efectuado alguna compra
+
+	SELECT nombre
+	FROM localidades
+	WHERE EXIST (SELECT *
+		     FROM renglones r
+			  INNER JOIN facturas f ON (c.IDCLIENTES = f.idcliente)
+		     WHERE (c.idlocalidades = localidades.idlocalidades))
+
+13) informar los productos que no fueron vendudos alguna vez
+
+	SELECT nombre
+	FROM productos
+	WHERE NOT EXIST (SELECT *
+			 FROM renglones r
+			 WHERE (r.idproducto = productos.idproducto))
+
+14) indicar el numero de factura y su monto, siempre que en la factura se hayan vendido todos los productos existenciales
+
+	SELECT f.idfactura,f.montofactura
+	FROM facturas f
+	WHERE NOT EXIST (SELECT *
+			 FROM producto p
+			 WHERE NOT EXIST (SELECT *
+					  FROM renglones r
+					  WHERE (r.idproducto = p.idproducto AND r.idfactura = f.idfactura)))
