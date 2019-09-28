@@ -1,0 +1,15 @@
+Protocolos DNS y SMTP.
+-- DNS:
+- Capa 2: MAC origen: MAC_MailServer_eth0
+MAC destino: MAC_R3_eth3
+- Capa 3: IP origen: IP de MailServer
+IP destino: IP de DNSResolver
+- Capa 4: Puerto origen: alguno > 1023
+Puerto destino: UDP/53
+-- SMTP:
+- Capa 2: MAC origen: MAC_MailServer_eth0
+MAC destino: MAC_R3_eth3
+- Capa 3: IP origen: IP de MailServer
+IP destino: IP de Gmail que te devuelve el DNS, algo así
+- Capa 4: Puerto origen: alguno > 1023
+Puerto destino: TCP/25

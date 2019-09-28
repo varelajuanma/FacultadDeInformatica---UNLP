@@ -1,0 +1,1 @@
+El 2 era: SYN+ACK, RST+ACK y RST+ACK

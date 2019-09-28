@@ -1,0 +1,1 @@
+Te queda la IP del eth1 de R4, y la MAC de eth1 de R4 también.
