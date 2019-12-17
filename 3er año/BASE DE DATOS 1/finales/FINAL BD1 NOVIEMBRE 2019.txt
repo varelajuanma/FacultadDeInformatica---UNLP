@@ -1,0 +1,9 @@
+Examen Final de Base de Datos 1 de hoy (Mesa de Noviembre):
+
+1) Definición de modelo de datos y clasificaciones.
+2) Definir la división y dar un ejemplo de como quedarían unas tablas.
+3) Definir dependencia multivaluada.
+4) Explicar el algoritmo para la perdida de información (ejemplificar con un valor).
+5) Armar un esquema con sus restricciones y llevarlo a 4FN (podía ser simple tipo ATENCIONES(dniPaciente, codHospital, nombreHospital) e iba a estar bien)
+6) Definir especialización y las formas en que se puede pasar a modelo relacional.
+7) Ejemplificar lo de arriba con un enunciado o un par de entidades inventadas. El ejemplo de la teoría de Empleado / Medico era suficiente.
