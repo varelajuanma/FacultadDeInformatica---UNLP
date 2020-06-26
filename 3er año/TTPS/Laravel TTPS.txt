@@ -1,0 +1,18 @@
+INSTALAR
+GeoIP -> composer require torann/geoip
+Bootstrap -> composer require twbs/bootstrap:4.3.1
+
+COMANDOS EN CONSOLA PARA ABRIR PROYECTO:
+-> php artisan serve
+o desde xampp
+-> localhost en el navegador, carpeta public.
+
+GENERAR CLAVE/KEY:
+php artisan key:generate
+
+
+
+
+EN ATOM:
+merge-conflicts
+highlight-selected
