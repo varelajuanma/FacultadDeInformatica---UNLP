@@ -1,0 +1,20 @@
+Ejercicio de tests
+Se espera que sea así
+self setUp.
+selt testUno.
+self tearDown.
+self setUp.
+selt testDos.
+self tearDown.
+…
+
+algo así es lo que hace el runCase
+strings := (Uno Dos Tres Cuatro)
+strings do: [:string | self setUp. self perform: 'test', string. self tearDown] .
+
+en realidad es mas avanzado, pero más o menos es eso, busca todos los que empiezan con la palabra test y se encarga de ejecutarlos como se debe
+
+Si analizamos esto, todos los métodos se implementan en su subclase (setUp, testX, tearDown). Heredando el esqueleto de la superclase.
+Esto se parece a un template method.
+
+El profesor recomienda los videos de Hernán Wilkinson en youtube para aprender Smalltalk.

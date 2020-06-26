@@ -1,0 +1,6 @@
+El profesor:
+Señaló que el mensaje = hace algo parecido.
+Magnitude es interesante porque tiene muchos template methods implementados. Simplemente implementando el < y el =, hereda un montón de métodos “gratis”, ya que esos métodos están basados en el < e =. Por ejemplo el between:and:, min:max, etc.
+
+en el otro ver el do: y el select:
+el do: depende de cada una de las subclases.
