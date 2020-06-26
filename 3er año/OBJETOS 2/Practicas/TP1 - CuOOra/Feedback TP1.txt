@@ -1,0 +1,69 @@
+Sobre el modelo:
+
+En general, tienen algunos problemas de asignación de responsabilidades y muchos problemas en el uso adecuado del protocolo de colecciones (presentan reiteradas veces el bad smell "Reinvetar la rueda")
+
+Los mensajes #preguntasDeUsuario y #respuestasDeUsuario de la clase CuOOra son claramente responsabilidad de la clase usuario, y, en consecuencia, también lo es el mensaje #calcularPuntajeDeUsuario, que además debería usar el método #sum: para hacer la suma iterada en las colecciones.
+-->PASAR LOS METODOS A CLASE USUARIO!
+-->#PREGUNTASDEUSUARIO ELIMINADO DEL UML --> EN LA CLASE USUARIO ES EL metodo #preguntas --> metodo eliminado lo usa CuOOra Test y preguntasDeUsuario
+-->#RESPUESTASDEUSUARIO ELIMINADO DEL UML --> pasar el metodo a la clase Usuario, chequear lo procedural. CONSULTARLO EN LA PRACTICA
+-->#CALCULARPUNTAJEDEUSUARIO ELIMINADO DEL UML --> pasar el metodo a la clase Usuario. CONSULTARLO EN LA PRACTICA
+
+El mensaje #preguntasRelevantesDeUsuario: deberían resolverlo con métodos más específicos de colecciones, como #flatCollect, #collect, #select, etc. --> SIMPLIFICAR CODIGO.
+
+El mensaje #registrarTopicoDeInteres:ParaUsuario:, es responsabilidad de la clase Usuario, CuOOra no aporta nada para resolverlo. 
+--> ELIMINARLO DIRECTAMENTE!
+--> ELIMINADO DEL UML!
+
+El mensaje #respuestasDeUsuario: es muy procedural, deben delegar en cada usuario y luego estos en cada pregunta la responsabilidad de conseguir las respuestas de un usuario. Pueden usar #flatCollect: para esto. --> CAMBIAR EL CODIGO.
+REALIZADO --> VERIFICAR EL UML PARA CAMBIARLE LOS NOMBRES!
+
+ 
+
+Sobre la UI:
+
+Repiten código para mostrar el listado de preguntas en el detalle del usuario y en el home, podrían haberlo evitado reutilizando un componente, por ejemplo, ItemListPreguntaComponent por composición.
+Un detalle menor, si hubieran redefinido el printOn de la clase tópico, se verían los nombres de los mismos en el widget de selección múltiple, en lugar de a Topico.
+
+ 
+
+El trabajo debe presentar una conjunción medianamente correcta de las tres grandes capas (modelo, tests y UI). Si bien sus tests son adecuados y la UI presenta algunas cuestiones mejorables, pero no graves, el moldeo tiene errores importantes (errores considerables para OO1 incluso).
+
+Me interesa que en la reentrega muestren una mejora significativa en el uso de colecciones (según lo detallado) y en la asignación de responsabilidades (también, según lo detallado).
+
+No es necesario que modifiquen la UI, pero si van a tener que hacer algún pequeño cambiar para hacer que esta coincida con la nueva implementación del modelo (hay mensajes que ya no deberían estar en CuOOra y pasan a estar en la clase Usuario). También corrijan esta situación en los tests, para que sigan pasando.
+
+Durante esta reentrega, no duden en contactarme de manera privada por esta plataforma así puedo orientarlos para cerrar esta etapa.
+
+Saludos!
+
+
+---------
+
+sistema := CuOOra clearSoleInstance.
+sistema := CuOOra soleInstance.
+topicoOO1 := sistema agregarTopicoConNombre: 'OO1' YDescripcion: nil.
+topicoTestDeUnidad := sistema agregarTopicoConNombre: 'Test de unidad' YDescripcion: nil.
+topicoSmalltalk := sistema agregarTopicoConNombre: 'Smalltalk' YDescripcion: nil.
+userPedro := sistema crearUsuarioConNombre: 'pedro@cuoora.com' Contraseña: 'pedro@cuoora.com'.
+userDiego := sistema crearUsuarioConNombre: 'diego@cuoora.com' Contraseña: 'diego@cuoora.com'.
+userJuan := sistema crearUsuarioConNombre: 'juan@cuoora.com' Contraseña: 'juan@cuoora.com'.
+userJuan seguirA: userDiego.
+userPedro seguirA: userJuan.
+preguntaDePedro := userPedro registrarNuevaPreguntaConTitulo: '¿Para que sirve el metodo SetUp?' Descripcion: nil Topicos: (Set with: topicoOO1 with: topicoTestDeUnidad).
+respuestaDeDiego := userDiego registrarRespuestaConTexto: 'Sirve para instanciar los objetos que son evaluados por el test en un único método y que se ejecute siempre antes de cada test.' paraPregunta: preguntaDePedro.
+preguntaDeDiego := userDiego registrarNuevaPreguntaConTitulo: '¿Que significa #messageNotUnderstood?'	Descripcion: nil Topicos: (Set with: topicoOO1 with: topicoSmalltalk).
+respuestaDePedro := userPedro registrarRespuestaConTexto: 'Significa que el objeto que recibió el mensaje no encontró ningún método para ejecutar en respuesta.'	paraPregunta: preguntaDeDiego.
+
+-------------------
+-ELIMINAR TEST DEL GETTER PREGUNTAS. --> eliminado testPreguntas de Usuario, preg si eliminamos tamb testPregDeUsuarios en CuOOra.
+
+-DEVOLVERRESPUESTAS DE:
+	FLATCOLLECT: [ :PRE | PRE DEVOLVERRESPUESTAS.....ARMAR METODO EN VEZ DEL REPUESTAS SELECT: [ .....
+-UNUSUARIO SEGUIDOS FLATCOLLET USUARIOPREGUNTAS ADDALL UNSUAURIO TOPICODEINTERES ..TODO LO OTRO..ASSET
+-EN USUARIO PODRIA TENER UN TOPICOSDELOSUSUARIOSSEGUIDOS
+CUOORA PARTICIPA EN SELF PREGUNTAS DE UN TOPICO..ESTO TIENE QUE ESTAR, LO OTRO SE PUEDE HACER EN USUARIO.
+
+-CALCULARPUNTAJE .. ^unUsuario calcularPuntaje: (self respuestasDeUsuario: unUsuario) PONERLO EN CUORA, 
+linea misrepuestas ese este metodo de arriba. --> hacerle el Test o verificar.
+
+hacer estos cambios en el UML

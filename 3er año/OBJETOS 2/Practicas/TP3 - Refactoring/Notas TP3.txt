@@ -1,0 +1,27 @@
+HACER INCAPIE SOLO EN BAD MELLS del documento que nos dieron!
+----------------------------
+"shotgun surgery" --> puede estar correcta o no el tema de relaciones, y redundancias.
+por ejemplo cuoora conoce todas las preguntas, y el usuario conoce las preguntas que hizo...por lo tanto al momento de hacer un cambio hay que tocar muchas cosas, es un shotgun surgery.
+----------------------------
+como ultimo paso, se agrega al documento de lo que encontramos innecesario, por ejemplo la variable answers en la clase Question. NO SE USA PARA NADA, NO ES UN BADMELLS ES UN ERROR DE CODIGO!.
+----------------------------
+no se puede modificar los test? es cierto, no se deberia realizar eso. Pero algunos refactorings es necesario modificarlos, siempre y cuando no se modifique el comportamiento, sino la logica. Ejemplo, en movemethod que el test usaba la clase A, cuando movi el metodo a la clase B, debo moverlo en el test.
+----------------------------
+JERARQUIA DE QUESTIONRETRIEVER --> seria el replace conditional with polimorfism.
+TEST -->"socialRetriever := QuestionRetriever new: cuoora and: #social.
+	topicsRetriever := QuestionRetriever new: cuoora and: #topics.
+	newsRetriever := QuestionRetriever new: cuoora and: #news.
+	popularTodayRetriever := QuestionRetriever new: cuoora and: #popularToday."
+CAMBIARLO POR LAS NUEVAS CLASES.
+----------------------------
+Las variables que encontramos que no indiquen su rol podemos marcarlas como badmells, poniendo la variable que encontramos y como la pasamos, aparece en el el documento de criterios y heuristicas.
+-----------------------------
+
+
+
+
+----------------------------
+para constructores duplicados-->pull up constructor....especifico del constructor.
+tomar de ejemplo el constructor de Question, que son dos y son duplicados pero a uno le agrega una variable mas. 
+el nombre no identifica el rol, en el constructor de answer con la variable descripcion: anAnswer. --> parecido a lo que vimos con nuestra consulta.
+
