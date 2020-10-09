@@ -1,0 +1,30 @@
+Tenemos en cuenta que las instrucciones no son atómicas.
+
+a) VERDADERO. 
+	Ya que si ejecutamos en orden (P1, P2, P3) --> x da 56.
+
+b) VERDADERO.
+	P3: (x*3)=0;
+	P1: (x=0)=True;
+	P1: y=4*2; --> y=8
+	P1: x=y+2; --> x=8+2=10
+	P1: fin.
+	P2: (x>0)=True;
+	P3: (x*2)=(10*2)=20;
+	P2: x:=x+1; --> 21
+	P2: fin.
+	P3: x:=x+1; --> 22
+	P3: fin.
+
+c) VERDADERO.
+	P3: (x*3)=0;
+	P1: (x=0)=True;
+	P1: y=4*2; --> y=8
+	P1: x=y+2; --> x=8+2=10
+	P1: fin.
+	P2: (x>0)=True;
+	P2: x:=x+1; --> x=10+1=11
+	P2: fin.
+	P3: (x*2); --> (11*2)=22
+	P3: x:=22+1; --> x=23
+	P3: fin.

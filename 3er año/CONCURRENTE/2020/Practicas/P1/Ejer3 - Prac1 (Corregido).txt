@@ -1,0 +1,22 @@
+a) Puede generarse un problema cuando el buffer esta vacio, ya que el productor produce y de forma atomica cuenta el elemento si tiene lugar en el buffer, ya que el elemento fue contado pero aun no almacenado el consumidor va a intentar consumirlo. En ese momento se va a encontrar con el buffer vacio y se romperia.
+La solucion podria ser incluir de forma atomica que se cuente el elemento y ademas se almacene, de forma analoga el consumidor no debe restar la variable sin extraer un elemento del buffer atomicamente.
+En lugar de:
+	<await (cant < N); cant++>
+	buffer[pri_vacia] = elemento;
+	pri_vacia = (pri_vacia + 1) mod N;
+
+Cambiar el > de lugar y quedaria:
+	<await (cant < N); cant++;
+	buffer[pri_vacia] = elemento>
+	pri_vacia = (pri_vacia + 1) mod N;
+
+b) Si tendriamos N productores necesitamos incluir la actualizacion de pri_vacia en la atomicidad. Ya que pri_vacia indica donde va el proximo elemento antes. Ya que ahora podria darse que un consumidor intenta guardar un elemento en una posicion donde otro proceso ya guardo algo.
+En lugar de:
+	<await (cant < N); cant++>
+	buffer[pri_vacia] = elemento;
+	pri_vacia = (pri_vacia + 1) mod N;
+
+Cambiar el > de lugar y quedaria:
+	<await (cant < N); cant++;
+	buffer[pri_vacia] = elemento;
+	pri_vacia = (pri_vacia + 1) mod N>

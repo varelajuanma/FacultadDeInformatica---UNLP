@@ -1,0 +1,16 @@
+colaEspecial R [5];
+sem mutex = 1;
+sem recurso = 5;
+
+Process Proceso [i: 1..N]
+  { P(recurso)
+    P(mutex);
+    R.pop(recursos);			//Retira el recurso
+    V(mutex);
+    //Usa_el_recurso
+    P(mutex);
+    R.push(recurso);			//Encola el recurso
+    V(mutex);
+    V(recurso);
+  }
+

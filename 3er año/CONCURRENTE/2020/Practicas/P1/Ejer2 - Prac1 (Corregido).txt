@@ -1,0 +1,17 @@
+Tendremos una variable global de tipo Array, un contador y varios procesos concurrentes.
+	int Arreglo[0:M];
+	int Total = 0;
+	const N;
+
+Podria pensarse como M procesos que revisan cada celda del vector en forma concurrente, pero tenemos un problema, ya que tener muchos procesos concurrentes ocasiona que no todos puedan acceder al recurso, por lo que seria mejor dividir en varios sectores al vector. La cantidad de sectores dependera del problema. Y si la cantidad de procesos es muy grande tambien sera util no actualizar la variable global a menos de que sea necesario.
+	
+	Process contador [i: 0..3]
+		{int Local = 0;
+		 int LimiteInferior, LimiteSuperior; //asignar el valor que corresponda segun el proceso.
+		 for j=LimiteInferior to LimiteSuperior
+			{if (Arreglo[j]==N)
+				Local++;
+			}
+		 if (Local > 0)
+			<Total = Total + Local>;
+		}

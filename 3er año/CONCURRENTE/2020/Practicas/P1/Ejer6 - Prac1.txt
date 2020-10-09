@@ -1,0 +1,2 @@
+NO CUMPLE con las 4 condiciones requeridas, le falta cumplir con la ausencia de demora innecesaria.
+Cumple Exclusion Mutua: por construcción, SC1 y SC2 se excluyen en el acceso a la SC.

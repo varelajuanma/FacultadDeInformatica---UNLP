@@ -1,0 +1,15 @@
+a)
+sem detector = 1;
+process Persona (id: 1..N)
+  { P(detector);
+    //La persona pasa por el detector
+    V(detector);
+  }
+
+b)
+sem detector = 3;
+process Persona (id: 1..N)
+  { P(detector)
+    //La persona pasa por el detector
+    V(detector)
+  }

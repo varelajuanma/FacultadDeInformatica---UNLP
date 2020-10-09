@@ -1,0 +1,10 @@
+colaEspecial C [5];
+
+Process Coordinador 
+  { while (true)
+      { <await (not empty (C)); //Espero a algun elemento encolado
+	C.pop (recurso)>;	//Retira recurso de la cola
+	//Usa_Recurso
+	<C.push(recurso)>; 	//Encola el recurso
+      }
+  }

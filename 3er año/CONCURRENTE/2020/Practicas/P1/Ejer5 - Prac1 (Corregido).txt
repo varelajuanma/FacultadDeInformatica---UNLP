@@ -1,0 +1,60 @@
+a)
+bool ImpresoraLibre = True;
+
+Process Persona[i:1..N]
+  { <await (ImpresoraLibre); 
+    ImpresoraLibre:=false>;
+    Imprimir(documento);
+    ImpresoraLibre:=true;
+  }
+
+---------------------------------------------------------
+b)
+ColaEspecial C;
+int siguiente = -1;
+
+Process Persona[i: 1..N]
+  { <if (siguiente=-1) siguiente=i;
+     else Agregar(C, i)>; 
+    <await (siguiente==i)>;
+    Imprimir(documento);
+    <if (empty(C)) siguiente:=-1
+     else siguiente = Sacar(C)>;
+  }
+
+---------------------------------------------------------
+c)
+ColaEspecialOrdenada C;
+int siguiente=-1;
+
+Process Persona[i:1..N]
+  { <if (siguiente=-1) siguiente= i;
+     else agregarOrdenado(C, i)>; 
+    <await (siguiente==i)>;
+    Imprimir(documento);
+    <if (empty(C)) siguiente:=-1
+     else siguiente = sacar(C)>;
+  }
+
+----------------------------------------------------------
+d)
+ColaEspecial C;
+bool ImpresoraEnUso=True;
+int siguiente=-1;
+
+Process Persona[i:1..N]
+  { agregar(C, i); 
+    <await (siguiente==i)>;
+    Imprimir(documento);
+    ImpresoraEnUso:=false;
+  }
+
+Process Coordinador[i:1]
+  { while (true)
+      { <await (not empty(C))>;
+	ImpresoraEnUso=true;
+        <siguiente = sacar(C)>;
+	<await (ImpresoraEnUso==false)>
+      }
+  }
+

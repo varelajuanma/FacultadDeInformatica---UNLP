@@ -1,0 +1,26 @@
+Si se pasa el semaforo general (usuarios) antes que el especifico del tipo de proceso (alta o baja), en un caso extremo podria darse que aun el tipo de proceso no pueda pasar, mientras que el otro si deberia pero queda trabado porque el tipo que no puede pasar consumio el semaforo general.
+Entonces la solucion seria invertir el orden de los semaforos para que primero se haga un check sobre el tipo de proceso y luego espero un lugar.
+Sobre liberar el recurso se recomienda liberarlos en el mismo orden en que fueron tomados pero para este caso no afecta ya que son consecutivos.
+La solucion quedaria de esta manera:
+
+sem usuarios = 6;
+sem alta = 4;
+sem baja = 5;
+
+process usuario-alta[i: 1..L]
+  {
+    P(alta);
+    P(usuarios);
+    //Usa la BD
+    V(usuarios);
+    V(alta);
+  }
+
+process usuario-baja[i: 1..L]
+  {
+    P(baja);
+    P(usuarios);
+    //Usa la BD
+    V(usuarios);
+    V(baja);
+  }

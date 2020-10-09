@@ -1,0 +1,20 @@
+------------------------------------------------------------------
+colaEspecial R [5];
+sem mutex_instancias = 1;
+int instancias = 5;
+
+Process Proceso [i: 1..N]
+  { P(mutex_instancias)
+    while (instancias > 0)
+      { R.pop(recursos);			//Retira el recurso
+	instancias := instancias - 1;
+	V(mutex_instancias);
+	//Usa_el_recurso
+	P(mutex_instancias);
+	R.push(recurso);			//Encola el recurso
+	instancias := instancias + 1;
+      }
+    V(mutex_instancias);
+  }
+
+----------------------------------------------------------------

@@ -1,0 +1,39 @@
+bool aprobados[40] = ([40] false);
+tareas[40];
+queue cola;
+sem seguir[40] = ([40] 0);
+sem mutex = 1;
+sem corregido[40] = ([40] 0);
+sem tareaTerminada = 0;
+
+process Alumno[id: 1..40] {
+	P(seguir[id]);
+	while (!aprobados[id]) {
+		RealizarTarea(tarea[id]);	//Realiza tarea segun su ID.
+		P(mutex);
+		push(cola, id);			//Encolo tarea.
+		V(mutex);
+		V(tareaTerminada);
+		P(corregido[id]);
+	}
+}
+
+process Maestra {
+	int cantAprobados := 0;
+	int x;
+	bool estaAprobado;
+	for i:=1 to 40 {
+		tareas[i] := GenerarTarea();
+		V(seguir[i]);
+	}
+	while (cantAprobados <= 40) {		//Debe ser menor igual o solo menor?
+		P(tareaTerminada);
+		P(mutex);
+		pop(cola, x);			//Desencolo tarea.
+		V(mutex);
+		estaAprobado := Corregir(tareas[x]);	//True si la tarea esta aprobada, False caso contrario.
+		aprobados[x] := estaAprobado;
+		if (estaAprobado) cantAprobados := cantAprobados + 1;
+		V(corregido[x]);
+	}
+}
